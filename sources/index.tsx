@@ -1,6 +1,12 @@
 import { ComponentChildren, createContext, FunctionComponent, JSX } from "preact"
 import { useCallback, useContext, useEffect, useMemo, useState } from "preact/hooks"
 
+export const join = (...paths: Array<string>) => {
+  return "/" + paths.filter(Boolean).map(path => {
+    return path.split(/\/+/g).filter(Boolean).join("/")
+  }).filter(Boolean).join("/")
+}
+
 export const match = (route: string, path: string): boolean => {
   const routeParts = new URL(`http://localhost/${route}`).pathname.split("/").filter(Boolean)
   const pathParts = new URL(`http://localhost/${path}`).pathname.split("/").filter(Boolean)
@@ -53,6 +59,7 @@ export interface PageContextInterface {
   pageGo: (offset: number) => void
   ready: boolean
   url: URL
+  baseUrl: string
 }
 
 export const PageContext = createContext<PageContextInterface>({
@@ -66,33 +73,44 @@ export const PageContext = createContext<PageContextInterface>({
   pageBack: () => {},
   pageForward: () => {},
   pageGo: () => {},
-  ready: false
+  ready: false,
+  baseUrl: ""
 })
 
 export interface PageProviderInterface {
   pages: PagesInterface
   scrollRestauration?: ScrollRestoration
+  base?: string
 }
 
-export const PageProvider: FunctionComponent<PageProviderInterface> = ({ children, pages, scrollRestauration }) => {
+export const PageProvider: FunctionComponent<PageProviderInterface> = ({ children, pages, scrollRestauration, base }) => {
   const [url, setUrl] = useState(new URL(window.location.href))
   const [ready, setReady] = useState(false)
+
+  const baseUrl = useMemo(() => {
+    return base || ""
+  }, [base])
 
   const pageUpdate = useCallback(() => {
     window.dispatchEvent(new CustomEvent("popstate"))
   }, [])
 
   const pageLink = useCallback((wantedPath: string, replace?: boolean) => {
-    if (url.pathname !== wantedPath) {
+    const currentPath = join(url.pathname, url.search, url.hash)
+    const wantedPathWithBase = join(baseUrl, wantedPath)
+
+    console.log({currentPath, wantedPathWithBase})
+
+    if (currentPath !== wantedPathWithBase) {
       if (replace) {
-        window.history.replaceState(wantedPath, wantedPath, wantedPath)
+        window.history.replaceState(wantedPathWithBase, wantedPathWithBase, wantedPathWithBase)
       } else {
-        window.history.pushState(wantedPath, wantedPath, wantedPath)
+        window.history.pushState(wantedPathWithBase, wantedPathWithBase, wantedPathWithBase)
       }
 
       pageUpdate()
     }
-  }, [url, pageUpdate])
+  }, [url, pageUpdate, baseUrl])
 
   const pageBack = useCallback(() => {
     window.history.back()
@@ -111,13 +129,21 @@ export const PageProvider: FunctionComponent<PageProviderInterface> = ({ childre
 
   const page = useMemo(() => {
     return pages.find(page => {
-      return match(page.path, url.pathname)
+      const pathWithBase = join(baseUrl, page.path)
+
+      return match(pathWithBase, url.pathname)
     })
-  }, [url, pages])
+  }, [url, pages, baseUrl])
 
   const parameters = useMemo(() => {
-    return matchParameters(page?.path ?? "", url.pathname)
-  }, [page, url])
+    if (!page) {
+      return {}
+    }
+
+    const pagePathWithBase = join(baseUrl, page.path)
+
+    return matchParameters(pagePathWithBase, url.pathname)
+  }, [page, url, baseUrl])
 
   const value = useMemo(() => ({
     parameters,
@@ -127,8 +153,9 @@ export const PageProvider: FunctionComponent<PageProviderInterface> = ({ childre
     pageForward,
     pageGo,
     ready,
-    url
-  }), [parameters, page, pageLink, pageBack, pageForward, pageGo, ready, url])
+    url,
+    baseUrl
+  }), [parameters, page, pageLink, pageBack, pageForward, pageGo, ready, url, baseUrl])
 
   useEffect(() => {
     if (scrollRestauration) {
@@ -183,6 +210,8 @@ export const usePageGo = () => useContext(PageContext).pageGo
 
 export const useReady = () => useContext(PageContext).ready
 
+export const useBaseUrl = () => useContext(PageContext).baseUrl
+
 export interface PageLinkProps {
   path: string
   replace?: boolean
@@ -192,6 +221,8 @@ export interface PageLinkProps {
 export const PageLink: FunctionComponent<PageLinkProps> = ({ path, replace, activeClassName, children }) => {
   const pageLink = usePageLink()
   const page = useContext(PageContext).page
+  const baseUrl = useBaseUrl()
+  const pathWithBaseUrl = useMemo(() => join(baseUrl, path), [baseUrl])
 
   const isActivePath = useMemo(() => {
     if (!page) {
@@ -220,7 +251,7 @@ export const PageLink: FunctionComponent<PageLinkProps> = ({ path, replace, acti
 
   return (
     <a
-      href={path}
+      href={pathWithBaseUrl}
       onClick={handleClick}
       className={className}>
       {children}
