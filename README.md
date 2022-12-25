@@ -285,6 +285,8 @@ export const LogoutPage = () => {
 
 ### PageBack
 
+This component let's you navigate back in the history if there is an entry available.
+
 #### Interface
 
 ```typescript
@@ -307,6 +309,8 @@ export const AdministrationPage = () => {
 
 ### PageForward
 
+This component let's you navigate forward in the history if there is an entry available.
+
 #### Interface
 
 ```typescript
@@ -328,6 +332,8 @@ export const AdministrationPage = () => {
 ```
 
 ### PageGo
+
+This component let's you navigate in any direction of any page count of your choice in the history.
 
 #### Interface
 
@@ -364,6 +370,8 @@ export const BlogPage = () => {
 ```
 
 ### usePageLink
+
+This hook let's you use the function that is used internally by the `<PageLink>` component to navigate programmatically in the history. Note that if you are using a base URL, you don't have to account for the base URL in the given path to the `pageLink` function since it is handled automatically for you at runtime.
 
 #### Interface
 
@@ -409,6 +417,8 @@ export const LogoutButton = () => {
 
 ### usePageBack
 
+This hook let's you programmatically navigate back in the history.
+
 #### Interface
 
 ```typescript
@@ -431,6 +441,8 @@ export const BackButton = () => {
 
 ### usePageFoward
 
+This hook let's you programmatically navigate back in the history.
+
 #### Interface
 
 ```typescript
@@ -452,6 +464,8 @@ export const ForwardButton = () => {
 ```
 
 ### usePageGo
+
+This hook let's you programmatically navigate in any direction of your choice in any count in the history.
 
 #### Interface
 
@@ -480,6 +494,8 @@ export const GoBackButton = () => {
 ```
 
 ### usePageParameters
+
+This hook let's you use the parameters that have been setup when adding a route. A parameter is something that looks like `:user` or `:article` in a path like `/users/:user` or `/articles/:article`. Since it may be easy to make a mistake when updating the route, the return value is a record that may define a string for a given property, or not. In this case, you have to account for possible case where the parameter might be undefined (when updating the route parameter's name).
 
 #### Interface
 
@@ -532,6 +548,8 @@ export const HomePage = () => {
 
 ### usePageSearchParameters
 
+This hook let's you use the query parameters of the URL, for instance if the URL looks like `https://domain.com/page?query=something`, the query would be equal to `?query=something`. In this case, this hook let's you access the query as a record of string. Note that a query might not always be there, even if the route matches so you have to account for cases where the query might be `undefined`.
+
 #### Interface
 
 ```typescript
@@ -559,6 +577,8 @@ export const UsersPage = () => {
 
 ### usePageHash
 
+This hook let's you access the hash in the URL. For instance, if the URL looks like `https://domain.com/oauth/login/return#token`, the hash (or fragment) would be equal to `token` in this case. This is useful when dealing with OAuth2 login flow where a token might be set in the hash part of your URL for instance.
+
 #### Interface
 
 ```typescript
@@ -585,6 +605,8 @@ const OAuthLoginPage = () => {
 
 ### usePageHost
 
+This hook let's you access the host of your URL. For instance, if the URL looks like `https://domain.com:8000/page`, the host would be `domain.com:8000` including the port.
+
 #### Interface
 
 ```typescript
@@ -607,6 +629,8 @@ const HomePage = () => {
 ```
 
 ### usePageHostName
+
+This hook let's you access the host of your URL. For instance, if the URL looks like `https://domain.com:8000/page`, the host would be `domain.com` ignoring the port.
 
 #### Interface
 
@@ -631,6 +655,8 @@ const HomePage = () => {
 
 ### usePageUrl
 
+This hook let's you access the full URL, meaning everything from the protocol up until the hash.
+
 #### Interface
 
 ```typescript
@@ -653,6 +679,8 @@ const HomePage = () => {
 ```
 
 ### usePageOrigin
+
+This hook let's you access the origin of the request. For instance, if the URL looks like `https://domain.com:8000/page`, the origin would be equal to `https://domain.com:8000`.
 
 #### Interface
 
@@ -677,6 +705,8 @@ const HomePage = () => {
 
 ### usePagePassword
 
+This hook let's you access the password of a URL. Though it is rarely useful in the context of a client-side application, you can access it. For instance, if the URL looks like `https://username:password@domain.com/page`, the password would be equal to `password`.
+
 #### Interface
 
 ```typescript
@@ -699,6 +729,8 @@ const HomePage = () => {
 ```
 
 ### usePageUserName
+
+This hook let's you access the user name of a URL. Though it is rarely useful in the context of a client-side application, you can access it. For instance, if the URL looks like `https://username:password@domain.com/page`, the user name would be equal to `username`.
 
 #### Interface
 
@@ -723,6 +755,8 @@ const HomePage = () => {
 
 ### usePagePath
 
+This hook let's you access the path of a URL. For instance, if the URL looks like `https://domain.com/resources/users?sort=date#token`, the path would be equal to `/resources/users`.
+
 #### Interface
 
 ```typescript
@@ -745,6 +779,8 @@ const HomePage = () => {
 ```
 
 ### usePageProtocol
+
+This hook let's you access the protocol of a URL. For instance, if the URL looks like `https://domain.com`, the domain would be equal to `https:` (without the double-slashes at the end but with a semi-colon).
 
 #### Interface
 
@@ -769,6 +805,8 @@ const HomePage = () => {
 
 ### usePagePort
 
+This hook let's you access the port of a URL. For instance, if the URL looks like `https://domain.com:8000/page`, the port would be equal to `8000`.
+
 #### Interface
 
 ```typescript
@@ -792,6 +830,8 @@ const HomePage = () => {
 
 ### match
 
+This function let's you match a URL that looks like a path you set in the `pages` like `/users/:user` with some parameters eventually. It will be matched against another path which is a concrete path, like the path of your URL. This function is used internally to match URLs and should not be used in a regular basis. It is exposed for completeness purposes and in the hope that it may be useful if you need to extend the capabilities of this library.
+
 #### Interface
 
 ```typescript
@@ -810,6 +850,8 @@ match("/users/:user", "/users/123/articles") === false
 
 ### matchParameters
 
+This function let's you get the parameters of a URL that looks like a path you set in the `pages` like `/users/:user` with some parameters eventually. It will be matched against another path which is a concrete path, like the path of your URL. This function is used internally to match URLs and should not be used in a regular basis. It is exposed for completeness purposes and in the hope that it may be useful if you need to extend the capabilities of this library.
+
 #### Interface
 
 ```typescript
@@ -825,6 +867,8 @@ matchParameters("/users/:user", "/users/123/articles") === {"user", "123"}
 ```
 
 ### join
+
+This function let's you join multiple path, without the headache of handling dangling or multiple slashes. This function is used internally to join URLs and should not be used in a regular basis. It is exposed for completeness purposes and in the hope that it may be useful if you need to extend the capabilities of this library.
 
 #### Interface
 
@@ -843,6 +887,8 @@ join("/preact-page", "/users/123/") === "/preact-page/users/123"
 ```
 
 ### useReady
+
+This hook let's you know whenever the provider is ready to listen for route changes. This is useful if you want to programmatically handle the History API, but still want to get the reactivity of this library. Though it is available and exposed for completeness, it should not be used in a regular basis.
 
 #### Interface
 
