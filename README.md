@@ -2,7 +2,7 @@
  
 History Web API implementation for Preact written in TypeScript
 
-[![NPM](https://badgen.net/npm/v/preact-page)](https://npmjs.com/package/preact-page) ![Bundlephobia](https://badgen.net/bundlephobia/minzip/preact-page) ![Snyk](https://badgen.net/snyk/aminnairi/preact-page)
+[![NPM](https://badgen.net/npm/v/preact-page)](https://npmjs.com/package/preact-page) ![Bundlephobia](https://badgen.net/bundlephobia/minzip/preact-page) ![Snyk](https://badgen.net/snyk/aminnairi/preact-page) ![Types](https://badgen.net/npm/types/preact-page)
 
 ## Requirements
 
