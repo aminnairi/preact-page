@@ -36,7 +36,6 @@
     "prepack": "npm run build && npm run types && ls dist/index.mjs && ls dist/index.umd.js && ls dist/index.d.ts"
   },
   "devDependencies": {
-    "preact-page": "file:preact-page-0.1.0.tgz",
     "typescript": "4.9.4",
     "vite": "4.0.3",
     "vite-plugin-preact": "0.2.1"
