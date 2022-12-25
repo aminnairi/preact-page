@@ -1,0 +1,24 @@
+{
+  "files": [
+    "sources/index.tsx"
+  ],
+  "exclude": [
+    "**/components",
+    "**/dist",
+    "**/node_modules",
+    "**/pages",
+    "**/index.tsx",
+    "**/main.tsx",
+    "**/vite.config.ts"
+  ],
+  "compilerOptions": {
+    "rootDir": "sources",
+    "outDir": "dist",
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "node",
+    "strict": true
+  }
+}
