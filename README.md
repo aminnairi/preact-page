@@ -87,7 +87,7 @@ export const pages: PagesInterface = [
 
 ### PageProvider
 
-This is the component that should be on top of all of the components in which you wish to use the other library's components & hooks.
+This is the component that should be on top of all of the components in which you wish to use the other library's components & hooks. You can also set a base URL in case you are using this router in a sub-page like GitHub Pages or GitLab Pages. Routes do not have to use the base URL in the `pages` array since it is automatically handled by all the components & hooks for you.
 
 #### Interface
 
@@ -104,6 +104,7 @@ export type PagesInterface = Array<PageInterface>;
 export interface PageProviderInterface {
     pages: PagesInterface;
     scrollRestauration?: ScrollRestoration;
+    base: string
 }
 
 export declare const PageProvider: FunctionComponent<PageProviderInterface>;
@@ -124,7 +125,7 @@ if (!(rootElement instanceof HTMLDivElement)) {
 }
 
 render(
-  <PageProvider pages={pages}>
+  <PageProvider pages={pages} base="/preact-page">
     <Main />
   </PageProvider>,
   rootElement
@@ -505,6 +506,30 @@ export const UserPage = () => {
 }
 ```
 
+### useBaseUrl
+
+Let's you access the base url defined in the provider.
+
+#### Interface
+
+```typescript
+export declare const useBaseUrl: () => string;
+```
+
+#### Example
+
+```tsx
+import { useBaseUrl } from "preact-page"
+
+export const HomePage = () => {
+  const baseUrl = useBaseUrl()
+  
+  return (
+    <p>Base url is {baseUrl}</p>
+  )
+}
+```
+
 ### usePageSearchParameters
 
 #### Interface
@@ -797,6 +822,24 @@ export declare const matchParameters: (route: string, path: string) => Record<st
 matchParameters("/users/:user", "/users") === {}
 matchParameters("/users/:user", "/users/123") === {"user": "123"}
 matchParameters("/users/:user", "/users/123/articles") === {"user", "123"}
+```
+
+### join
+
+#### Interface
+
+```typescript
+export declare const join: (...paths: Array<string>) => string;
+```
+
+#### Example
+
+```tsx
+import { join } from "preact-page"
+
+join("", "/articles/") === "/articles"
+join("/preact-page", "/") === "/preact-page"
+join("/preact-page", "/users/123/") === "/preact-page/users/123"
 ```
 
 ### useReady
