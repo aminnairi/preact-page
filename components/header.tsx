@@ -1,4 +1,4 @@
-import { PageLink } from "preact-page"
+import { PageLink } from "../sources"
 
 export const Header = () => {
   return (
