@@ -1,5 +1,5 @@
 import { render } from "preact"
-import { PageProvider } from "preact-page"
+import { PageProvider } from "./sources"
 import { Main } from "./main"
 import { pages } from "./pages"
 
@@ -10,7 +10,7 @@ if (!(rootElement instanceof HTMLDivElement)) {
 }
 
 render(
-  <PageProvider pages={pages}>
+  <PageProvider pages={pages} base="/preact-page">
     <Main />
   </PageProvider>,
   rootElement

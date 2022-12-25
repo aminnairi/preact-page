@@ -1,5 +1,5 @@
 import { Fragment } from "preact"
-import { PageView } from "preact-page"
+import { PageView } from "./sources"
 import { NotFoundPage } from "./pages/not-found"
 import { Header } from "./components/header"
 

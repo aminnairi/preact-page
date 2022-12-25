@@ -1,6 +1,6 @@
 import { Fragment } from "preact"
 import { useEffect, useMemo, useState } from "preact/hooks"
-import { usePageParameters } from "preact-page"
+import { usePageParameters } from "../sources"
 
 export const UserPage = () => {
   const pageParameters = usePageParameters()
