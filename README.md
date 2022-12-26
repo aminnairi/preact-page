@@ -536,6 +536,8 @@ export const HomePage = () => {
 
 This hook let's you use the query parameters of the URL, for instance if the URL looks like `https://domain.com/page?query=something`, the query would be equal to `?query=something`. In this case, this hook let's you access the query as a record of string. Note that a query might not always be there, even if the route matches so you have to account for cases where the query might be `undefined`.
 
+> Note: this hook will apply parameter pollution cleaning, making it remove any duplicate queries in the URL. If the URL looks like `https://domain.com?sort=date&sort=name&sort=email`, the `sort` query parameter will be equal to `date` which is the first encountered parameter in the URL. This prevents [HTTP Parameter Pollution](https://en.wikipedia.org/wiki/HTTP_parameter_pollution) and makes it impossible for an attacker to inject more parameters in the URL afterwards. If you need to get all of the parameters, even the duplicated ones, use the `new URLSearchParams(window.location.search)` and use the `URLSearchParams.prototype.entries` method on it.
+
 #### Interface
 
 ```typescript
