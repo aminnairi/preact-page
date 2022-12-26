@@ -220,28 +220,21 @@ export interface PageLinkProps {
 
 export const PageLink: FunctionComponent<PageLinkProps> = ({ path, replace, activeClassName, children }) => {
   const pageLink = usePageLink()
-  const page = useContext(PageContext).page
+  const pagePath = usePagePath()
   const baseUrl = useBaseUrl()
   const pathWithBaseUrl = useMemo(() => join(baseUrl, path), [baseUrl])
 
   const isActivePath = useMemo(() => {
-    if (!page) {
-      return false
-    } 
-
-    return match(page.path, path)
-  }, [page, path])
+    console.log({pagePath, pathWithBaseUrl})
+    return pagePath === pathWithBaseUrl
+  }, [pagePath, pathWithBaseUrl])
 
   const className = useMemo(() => {
-    if (!isActivePath) {
-      return ""
+    if (isActivePath && activeClassName) {
+      return activeClassName
     }
 
-    if (!activeClassName) {
-      return ""
-    }
-
-    return activeClassName
+    return ""
   }, [isActivePath])
 
   const handleClick: JSX.MouseEventHandler<HTMLAnchorElement> = useCallback((event) => {
