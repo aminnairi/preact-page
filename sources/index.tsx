@@ -1,6 +1,12 @@
 import { ComponentChildren, createContext, FunctionComponent, JSX } from "preact"
 import { useCallback, useContext, useEffect, useMemo, useState } from "preact/hooks"
 
+export const withParameters = (path: string, parameters: Record<string, string>) => {
+  return Object.entries(parameters).reduce((computedPath, [parameterName, parameterValue]) => {
+    return computedPath.replace(`:${parameterName}`, parameterValue)
+  }, path)
+}
+
 export const join = (...paths: Array<string>) => {
   return "/" + paths.filter(Boolean).map(path => {
     return path.split(/\/+/g).filter(Boolean).join("/")
