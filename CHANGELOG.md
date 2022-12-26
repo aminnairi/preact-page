@@ -2,8 +2,25 @@
 
 ## Versions
 
+- [`0.2.1`](#021)
 - [`0.2.0`](#020)
 - [`0.1.0`](#010)
+
+## 0.2.1
+
+### Major changes
+
+None.
+
+### Minor changes
+
+None.
+
+### Bug & security fixes
+
+- Issue with the activeClassName matching all dynamic routes ([#14](https://github.com/aminnairi/preact-page/issues/14))
+- Issue with dangling console log ([#15](https://github.com/aminnairi/preact-page/issues/15))
+- Issue with missing imports in the documentation ([#18](https://github.com/aminnairi/preact-page/issues/18))
 
 ## 0.2.0
 
