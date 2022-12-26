@@ -40,15 +40,12 @@ render(
 ```
 
 ```tsx
-import { Fragment } from "preact"
 import { PageView } from "preact-page"
 import { NotFoundPage } from "./pages/not-found"
 
 export const Main = () => {
   return (
-    <Fragment>
-      <PageView fallback={<NotFoundPage />} />
-    </Fragment>
+    <PageView fallback={<NotFoundPage />} />
   )
 }
 ```
@@ -71,8 +68,6 @@ export const NotFoundPage = () => {
 
 ```tsx
 import { HomePage } from "./home"
-import { AboutPage } from "./about";
-import { UserPage } from "./user";
 import { PagesInterface } from "preact-page";
 
 export const pages: PagesInterface = [
@@ -177,7 +172,6 @@ export declare const PageView: FunctionComponent<PageViewInterface>;
 #### Example
 
 ```tsx
-import { Fragment } from "preact"
 import { PageView } from "preact-page"
 import { NotFoundPage } from "./pages/not-found"
 
@@ -266,6 +260,8 @@ export declare const PageRedirect: FunctionComponent<PageRedirectInterface>;
 #### Example
 
 ```tsx
+import { PageRedirect } from "preact-page"
+
 export const OldPage = () => {
   return (
     <PageRedirect path="/" />
@@ -382,35 +378,29 @@ export declare const usePageLink: () => (path: string, replace?: boolean) => voi
 #### Example
 
 ```tsx
-import { useCallback } from "preact/hooks"
 import { usePageLink } from "preact-page"
 
 export const HomeButton = () => {
   const pageLink = usePageLink()
   
-  const homePageLink = useCallback(() => {
-    pageLink("/")
-  }, [pageLink])
-  
   return (
-    <button onClick={homePageLink}>Home</button>
+    <button onClick={() => pageLink("/")}>
+      Home
+    </button>
   )
 }
 ```
 
 ```tsx
-import { useCallback } from "preact/hooks"
 import { usePageLink } from "preact-page"
 
 export const LogoutButton = () => {
   const pageLink = usePageLink()
   
-  const logoutPageLink = useCallback(() => {
-    pageLink("/login", true)
-  }, [pageLink])
-  
   return (
-    <button onClick={logoutPageLink}>Logout</button>
+    <button onClick={() => pageLink("/login", true)}>
+      Logout
+    </button>
   )
 }
 ```
@@ -434,7 +424,9 @@ export const BackButton = () => {
   const pageBack = usePageBack()
   
   return (
-    <button onClick={pageBack}>Back</button>
+    <button onClick={pageBack}>
+      Back
+    </button>
   )
 }
 ```
@@ -458,7 +450,9 @@ export const ForwardButton = () => {
   const pageForward = usePageForward()
   
   return (
-    <button onClick={pageForward}>Forward</button>
+    <button onClick={pageForward}>
+      Forward
+    </button>
   )
 }
 ```
@@ -477,18 +471,15 @@ export declare const usePageGo: () => (offset: number) => void;
 
 
 ```tsx
-import { useCallback } from "preact/hooks"
 import { usePageGo } from "preact-page"
 
 export const GoBackButton = () => {
   const pageGo = usePageGo()
   
-  const goBackTwoPages = useCallback(() => {
-    pageGo(-2)
-  }, [pageGo])
-  
   return (
-    <button onClick={goBackTwoPages}>Go Back Two Pages</button>
+    <button onClick={() => pageGo(-2)}>
+      Go Back Two Pages
+    </button>
   )
 }
 ```
@@ -506,18 +497,13 @@ export declare const usePageParameters: () => Record<string, string | undefined>
 #### Example
 
 ```tsx
-import { useMemo } from "preact/hooks"
 import { usePageParameters } from "preact-page"
 
 export const UserPage = () => {
-  const pageParameters = usePageParameters()
-
-  const user = useMemo(() => {
-    return pageParameters["user"] || "???"
-  }, [pageParameters])
+  const { user } = usePageParameters()
 
   return (
-    <h1>User#{user}</h1>
+    <h1>User#{user ?? "unknown"}</h1>
   )
 }
 ```
@@ -559,18 +545,13 @@ export declare const usePageSearchParameters: () => Record<string, string | unde
 #### Example
 
 ```tsx
-import { useMemo } from "preact/hooks"
 import { usePageSearchParameters } from "preact-page"
 
 export const UsersPage = () => {
-  const pageSearchParameters = usePageSearchParameters()
-
-  const sort = useMemo(() => {
-    return pageSearchParameters["sort"] || "date"
-  }, [pageSearchParameters])
+  const { sort } = usePageSearchParameters()
 
   return (
-    <p>Users sorted by {sort}</p>
+    <p>Users sorted by {sort ?? "date"}</p>
   )
 }
 ```
@@ -588,17 +569,13 @@ export declare const usePageHash: () => string;
 #### Example
 
 ```tsx
-import { Fragment } from "preact"
 import { usePageHash } from "preact-page"
 
 const OAuthLoginPage = () => {
   const token = usePageHash()
 
   return (
-    <Fragment>
-      <h1>OAuth Login</h1>
-      <p>Token is {token}</p>
-    </Fragment>
+    <p>Token is {token}</p>
   )
 }
 ```
@@ -616,7 +593,6 @@ export declare const usePageHost: () => string;
 #### Example
 
 ```tsx
-import { Fragment } from "preact"
 import { usePageHost } from "preact-page"
 
 const HomePage = () => {
@@ -666,7 +642,6 @@ export declare const usePageUrl: () => string;
 #### Example
 
 ```tsx
-import { Fragment } from "preact"
 import { usePageUrl } from "preact-page"
 
 const HomePage = () => {
@@ -691,7 +666,6 @@ export declare const usePageOrigin: () => string;
 #### Example
 
 ```tsx
-import { Fragment } from "preact"
 import { usePageUrl } from "preact-page"
 
 const HomePage = () => {
@@ -716,7 +690,6 @@ export declare const usePagePassword: () => string;
 #### Example
 
 ```tsx
-import { Fragment } from "preact"
 import { usePagePassword } from "preact-page"
 
 const HomePage = () => {
@@ -741,7 +714,6 @@ export declare const usePageUserName: () => string;
 #### Example
 
 ```tsx
-import { Fragment } from "preact"
 import { usePageUserName } from "preact-page"
 
 const HomePage = () => {
@@ -766,7 +738,6 @@ export declare const usePagePath: () => string;
 #### Example
 
 ```tsx
-import { Fragment } from "preact"
 import { usePagePath } from "preact-page"
 
 const HomePage = () => {
@@ -791,7 +762,6 @@ export declare const usePageProtocol: () => string;
 #### Example
 
 ```tsx
-import { Fragment } from "preact"
 import { usePageProtocol } from "preact-page"
 
 const HomePage = () => {
@@ -816,7 +786,6 @@ export declare const usePagePort: () => string;
 #### Example
 
 ```tsx
-import { Fragment } from "preact"
 import { usePagePort } from "preact-page"
 
 const HomePage = () => {
@@ -861,6 +830,8 @@ export declare const matchParameters: (route: string, path: string) => Record<st
 #### Example
 
 ```typescript
+import { matchParameters } from "preact-page"
+
 matchParameters("/users/:user", "/users") === {}
 matchParameters("/users/:user", "/users/123") === {"user": "123"}
 matchParameters("/users/:user", "/users/123/articles") === {"user", "123"}
