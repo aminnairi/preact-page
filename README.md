@@ -6,6 +6,7 @@ History Web API implementation for Preact written in TypeScript
 
 ## Summary
 
+- [Summary](#summary)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -91,9 +92,12 @@ History Web API implementation for Preact written in TypeScript
   - [join](#join)
     - [Interface](#interface-26)
     - [Example](#example-26)
-  - [useReady](#useready)
+  - [withParameters](#withparameters)
     - [Interface](#interface-27)
     - [Example](#example-27)
+  - [useReady](#useready)
+    - [Interface](#interface-28)
+    - [Example](#example-28)
 - [Issues](#issues)
 - [Changelog](#changelog)
 - [Code of conduct](#code-of-conduct)
@@ -1122,6 +1126,32 @@ import { join } from "preact-page"
 join("", "/articles/") === "/articles"
 join("/preact-page", "/") === "/preact-page"
 join("/preact-page", "/users/123/") === "/preact-page/users/123"
+```
+
+[Summary](#summary)
+
+### withParameters
+
+This function let's you replace a parameterized route with the wanted parameters. This is useful in case where you need to create paths that are based on a dynamic path like a user details page for instance.
+
+[Summary](#summary)
+
+#### Interface
+
+```typescript
+export declare const withParameters: (path: string, parameters: Record<string, string>) => string
+```
+
+[Summary](#summary)
+
+#### Example
+
+```typescript
+import { withParameters } from "preact-page"
+
+withParameters("/users/:user", {}) === "/users/:user"
+withParameters("/users/:user", { user: "123" }) === "/users/123"
+withParameters("/users/:id", { user: "123" }) === "/users/:id"
 ```
 
 [Summary](#summary)
