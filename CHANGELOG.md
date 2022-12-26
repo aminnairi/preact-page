@@ -2,9 +2,30 @@
 
 ## Versions
 
+- [`0.3.0`](#030)
 - [`0.2.1`](#021)
 - [`0.2.0`](#020)
 - [`0.1.0`](#010)
+
+## 0.3.0
+
+### Major changes
+
+None.
+
+### Minor changes
+
+- Enhancement for the parameter pollution cleaning ([#9](https://github.com/aminnairi/preact-page/issues/9))
+- Enhancement for functions that use boolean parameters ([#11](https://github.com/aminnairi/preact-page/issues/11))
+- New feature for having a summary with redirection links ([#12](https://github.com/aminnairi/preact-page/issues/12))
+- New feature for using paths with parameters ([#13](https://github.com/aminnairi/preact-page/issues/13))
+- New feature for having a link for the types included badge ([#16](https://github.com/aminnairi/preact-page/issues/16))
+- New feature for having a link for the package size badge [#17](https://github.com/aminnairi/preact-page/issues/17)
+- New feature for auditing package for vulnerabilities on push [#22](https://github.com/aminnairi/preact-page/issues/22)
+
+### Bug & security fixes
+
+None.
 
 ## 0.2.1
 
