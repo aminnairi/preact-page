@@ -274,7 +274,7 @@ import { PageRedirect } from "preact-page"
 
 export const LogoutPage = () => {
   return (
-    <PageRedirect path="/login" replace={true} />
+    <PageRedirect path="/login" replace />
   )
 }
 ```
