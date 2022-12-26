@@ -259,23 +259,23 @@ export const usePageParameters = () => {
   return useContext(PageContext).parameters
 }
 
-export const usePageSearchParameters = (): Record<string, string | undefined> => {
-  const searchParameters = useContext(PageContext).url.searchParams
-  const searchParametersEntries = [...searchParameters]
-  const initialSearchParameters = {}
+export const usePageQuery = (): Record<string, string | undefined> => {
+  const queries = useContext(PageContext).url.searchParams
+  const entries = [...queries]
+  const initialQueries = {}
 
-  const unpollutedSearchParameters = searchParametersEntries.reduce((previousSearchParameters, [searchParameterName, searchParameterValue]) => {
-    if (searchParameterName in previousSearchParameters) {
-      return previousSearchParameters
+  const unpollutedQueries = entries.reduce((previousQueries, [query, value]) => {
+    if (query in previousQueries) {
+      return previousQueries
     }
 
     return {
-      ...previousSearchParameters,
-      [searchParameterName]: searchParameterValue
+      ...previousQueries,
+      [query]: value
     }
-  }, initialSearchParameters)
+  }, initialQueries)
 
-  return unpollutedSearchParameters
+  return unpollutedQueries
 }
 
 export const usePageHash = () => {
