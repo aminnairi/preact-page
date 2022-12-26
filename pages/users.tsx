@@ -1,19 +1,19 @@
 import { Fragment } from "preact"
 import { useMemo } from "preact/hooks"
-import { usePageSearchParameters } from "../sources"
+import { usePageQuery } from "../sources"
 
 export const UsersPage = () => {
-  const pageSearchParameters = usePageSearchParameters()
+  const queries = usePageQuery()
 
   const sort = useMemo(() => {
-    const sortedBy = pageSearchParameters["sort"]
+    const sortedBy = queries["sort"]
 
     if (!sortedBy) {
       return "date"
     }
 
     return sortedBy
-  }, [pageSearchParameters])
+  }, [queries])
 
   return (
     <Fragment>
