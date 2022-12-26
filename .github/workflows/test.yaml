@@ -13,5 +13,8 @@ jobs:
       - name: Install
         run: npm install
 
+      - name: Audit
+        run: npm audit
+
       - name: Pack
         run: npm pack --dry-run
