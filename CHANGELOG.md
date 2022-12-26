@@ -2,10 +2,25 @@
 
 ## Versions
 
+- [`1.0.0`](#100)
 - [`0.3.0`](#030)
 - [`0.2.1`](#021)
 - [`0.2.0`](#020)
 - [`0.1.0`](#010)
+
+## 1.0.0
+
+### Major changes
+
+- Better name for the usePageSearchParameters ([#10](https://github.com/aminnairi/preact-page/issues/10))
+
+### Minor changes
+
+None.
+
+### Bug & security fixes
+
+None.
 
 ## 0.3.0
 
