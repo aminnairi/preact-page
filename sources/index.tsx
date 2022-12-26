@@ -99,8 +99,6 @@ export const PageProvider: FunctionComponent<PageProviderInterface> = ({ childre
     const currentPath = join(url.pathname, url.search, url.hash)
     const wantedPathWithBase = join(baseUrl, wantedPath)
 
-    console.log({currentPath, wantedPathWithBase})
-
     if (currentPath !== wantedPathWithBase) {
       if (replace) {
         window.history.replaceState(wantedPathWithBase, wantedPathWithBase, wantedPathWithBase)
@@ -225,7 +223,6 @@ export const PageLink: FunctionComponent<PageLinkProps> = ({ path, replace, acti
   const pathWithBaseUrl = useMemo(() => join(baseUrl, path), [baseUrl])
 
   const isActivePath = useMemo(() => {
-    console.log({pagePath, pathWithBaseUrl})
     return pagePath === pathWithBaseUrl
   }, [pagePath, pathWithBaseUrl])
 
