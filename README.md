@@ -268,6 +268,75 @@ export const pages = [
 
 [Summary](#summary)
 
+### PageStaticProvider
+
+This commponent let's you render your pages statically by giving it the path you want to render. Sounds not very interesting from the point-of-view of a client-side application which is supposed to be dynamic and not static so do not use it on the client-side. However, from the point-of-view of a server-side rendering, this is great because it let's you map your HTTP server's request path to your view. In simple terms, this simply means that you can pre-render your page from the server and hydrate it afterwards from the client.
+
+#### Interface
+
+```typescript
+export interface PageProviderInterface {
+    pages: PagesInterface
+    scrollRestauration?: ScrollRestoration
+    base?: string
+}
+
+export interface PageStaticProviderInterface extends PageProviderInterface {
+    path: string
+}
+
+export declare const PageStaticProvider: FunctionComponent<PageStaticProviderInterface>
+```
+
+#### Example
+
+```tsx
+import { express } from "express"
+import { render } from "preact-render-to-string"
+import { PageStaticProvider } from "preact-page"
+import { Main } from "../client/main"
+import { pages } from "../client/pages"
+
+const server = express()
+
+server.get("/api/users", (request, response) => {
+  response.json({
+    success: true,
+    users: []
+  })
+})
+
+server.use(express.static("build/client"))
+
+server.all("*", () => {
+  const root = render(
+    <PageStaticProvider pages={pages} path={request.url}>
+      <Main />
+    </PageStaticProvider>
+  )
+  
+  response.set("Content-Type", "text/html").send(`
+    <!DOCTYPE html> 
+    <html>
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="App description">
+        <script src="/index.js"></script>
+        <title>App</title>
+      </head>
+      <body>
+        <div id="root">${root}</div>
+      </body>
+    </html>
+  `)
+})
+
+server.listen(8000, () => {
+  console.log("Pre-render server listening at http://localhost:8000")
+})
+```
+
 ### PageView
 
 This is where the library will inject the matching element for a given path. You can add a property to control what to show whenever no pages matches the current path.
