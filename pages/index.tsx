@@ -6,7 +6,7 @@ import { UsersPage } from "./users";
 import { OldPage } from "./old"
 
 export const path = {
-  home: "/home",
+  home: "/",
   about: "/about",
   users: "/users",
   old: "/old",
