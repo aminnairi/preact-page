@@ -275,6 +275,8 @@ export const pages = [
 
 This commponent let's you render your pages statically by giving it the path you want to render. Sounds not very interesting from the point-of-view of a client-side application which is supposed to be dynamic and not static so do not use it on the client-side. However, from the point-of-view of a server-side rendering, this is great because it let's you map your HTTP server's request path to your view. In simple terms, this simply means that you can pre-render your page from the server and hydrate it afterwards from the client.
 
+[Summary](#summary)
+
 #### Interface
 
 ```typescript
@@ -290,6 +292,8 @@ export interface PageStaticProviderInterface extends PageProviderInterface {
 
 export declare const PageStaticProvider: FunctionComponent<PageStaticProviderInterface>
 ```
+
+[Summary](#summary)
 
 #### Example
 
@@ -339,6 +343,8 @@ server.listen(8000, () => {
   console.log("Pre-render server listening at http://localhost:8000")
 })
 ```
+
+[Summary](#summary)
 
 ### PageView
 
