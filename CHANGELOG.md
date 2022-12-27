@@ -2,11 +2,26 @@
 
 ## Versions
 
+- [`1.1.0`](#110)
 - [`1.0.0`](#100)
 - [`0.3.0`](#030)
 - [`0.2.1`](#021)
 - [`0.2.0`](#020)
 - [`0.1.0`](#010)
+
+## 1.1.0
+
+### Major changes
+
+None.
+
+### Minor changes
+
+- New feature for adding a new provider for server side rendering ([#31](https://github.com/aminnairi/preact-page/issues/31))
+
+### Bug & security fixes
+
+None.
 
 ## 1.0.0
 
