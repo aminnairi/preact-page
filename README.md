@@ -801,6 +801,7 @@ server.all("*", (request, response) => {
       <html lang="en-US">
         <head>
           <PageTitle />
+          <script src="/index.js" type="module"></script>
         </head>
         <body>
           <div id="root">
@@ -861,6 +862,7 @@ server.all("*", (request, response) => {
       <html lang="en-US">
         <head>
           <PageDescription />
+          <script src="/index.js" type="module"></script>
         </head>
         <body>
           <div id="root">
@@ -921,6 +923,7 @@ server.all("*", (request, response) => {
       <html lang="en-US">
         <head>
           <PageMetas />
+          <script src="/index.js" type="module"></script>
         </head>
         <body>
           <div id="root">
