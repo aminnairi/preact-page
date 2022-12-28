@@ -298,7 +298,7 @@ export declare const PageStaticProvider: FunctionComponent<PageStaticProviderInt
 #### Example
 
 ```tsx
-import { express } from "express"
+import express from "express"
 import { render } from "preact-render-to-string"
 import { PageStaticProvider } from "preact-page"
 import { Main } from "../client/main"
@@ -342,6 +342,26 @@ server.all("*", () => {
 server.listen(8000, () => {
   console.log("Pre-render server listening at http://localhost:8000")
 })
+```
+
+```tsx
+import { hydrate } from "preact"
+import { PageProvider } from "preact-page"
+import { Main } from "./main"
+import { pages } from "./pages"
+
+const rootElement = document.getElementById("root")
+
+if (!(rootElement instanceof HTMLDivElement)) {
+  throw new Error("Root element not found")
+}
+
+hydrate(
+  <PageProvider pages={pages}>
+    <Main />
+  </PageProvider>,
+  rootElement
+)
 ```
 
 [Summary](#summary)
