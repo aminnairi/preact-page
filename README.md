@@ -416,101 +416,6 @@ export const pages: PagesInterface = [
 
 [Summary](#summary)
 
-### PageStaticProvider
-
-This commponent let's you render your pages statically by giving it the path you want to render. Sounds not very interesting from the point-of-view of a client-side application which is supposed to be dynamic and not static so do not use it on the client-side. However, from the point-of-view of a server-side rendering, this is great because it let's you map your HTTP server's request path to your view. In simple terms, this simply means that you can pre-render your page from the server and hydrate it afterwards from the client.
-
-[Summary](#summary)
-
-#### Interface
-
-```typescript
-export interface PageProviderInterface {
-    pages: PagesInterface
-    scrollRestauration?: ScrollRestoration
-    base?: string
-}
-
-export interface PageStaticProviderInterface extends PageProviderInterface {
-    path: string
-}
-
-export declare const PageStaticProvider: FunctionComponent<PageStaticProviderInterface>
-```
-
-[Summary](#summary)
-
-#### Example
-
-```tsx
-import express from "express"
-import { render } from "preact-render-to-string"
-import { PageStaticProvider } from "preact-page"
-import { Main } from "../client/main"
-import { pages } from "../client/pages"
-
-const server = express()
-
-server.get("/api/users", (request, response) => {
-  response.json({
-    success: true,
-    users: []
-  })
-})
-
-server.use(express.static("build/client"))
-
-server.all("*", () => {
-  const root = render(
-    <PageStaticProvider pages={pages} path={request.url}>
-      <Main />
-    </PageStaticProvider>
-  )
-  
-  response.set("Content-Type", "text/html").send(`
-    <!DOCTYPE html> 
-    <html>
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="App description">
-        <script src="/index.js"></script>
-        <title>App</title>
-      </head>
-      <body>
-        <div id="root">${root}</div>
-      </body>
-    </html>
-  `)
-})
-
-server.listen(8000, () => {
-  console.log("Pre-render server listening at http://localhost:8000")
-})
-```
-
-```tsx
-import { hydrate } from "preact"
-import { PageProvider } from "preact-page"
-import { Main } from "./main"
-import { pages } from "./pages"
-
-const rootElement = document.getElementById("root")
-
-if (!(rootElement instanceof HTMLDivElement)) {
-  throw new Error("Root element not found")
-}
-
-hydrate(
-  <PageProvider pages={pages}>
-    <Main />
-  </PageProvider>,
-  rootElement
-)
-```
-
-[Summary](#summary)
-
 ### PageView
 
 This is where the library will inject the matching element for a given path. You can add a property to control what to show whenever no pages matches the current path.
@@ -759,6 +664,98 @@ export const BlogPage = () => {
 
 [Summary](#summary)
 
+### PageStaticProvider
+
+This commponent let's you render your pages statically by giving it the path you want to render. Sounds not very interesting from the point-of-view of a client-side application which is supposed to be dynamic and not static so do not use it on the client-side. However, from the point-of-view of a server-side rendering, this is great because it let's you map your HTTP server's request path to your view. In simple terms, this simply means that you can pre-render your page from the server and hydrate it afterwards from the client.
+
+[Summary](#summary)
+
+#### Interface
+
+```typescript
+export interface PageProviderInterface {
+    pages: PagesInterface
+    scrollRestauration?: ScrollRestoration
+    base?: string
+}
+
+export interface PageStaticProviderInterface extends PageProviderInterface {
+    path: string
+}
+
+export declare const PageStaticProvider: FunctionComponent<PageStaticProviderInterface>
+```
+
+[Summary](#summary)
+
+#### Example
+
+```tsx
+import express, { Request, Response } from "express"
+import { PageStaticProvider } from "preact-page"
+import { render } from "preact-render-to-string"
+import { Main } from "../client/main"
+import { pages } from "../client/pages"
+
+const server = express()
+
+server.get("/api/users", (request, response) => {
+  response.json({
+    success: true,
+    users: []
+  })
+})
+
+server.use(express.static("build/client"))
+
+server.all("*", (request, response) => {
+  response.set("Content-Type", "text/html").send("<!DOCTYPE html>" + render(
+    <PageStaticProvider pages={pages} path={request.url}>
+      <html lang="en-US">
+        <head>
+          <meta charSet="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta name="description" content="App description" />
+          <title>App</title>
+          <script src="/index.js" type="module"></script>
+        </head>
+        <body>
+          <div id="root">
+            <Main />
+          </div>
+        </body>
+      </html>
+    </PageStaticProvider>
+  ))
+})
+
+server.listen(8000, () => {
+  console.log("Server listening on http://localhost:8000")
+})
+```
+
+```tsx
+import { hydrate } from "preact"
+import { PageProvider } from "preact-page"
+import { Main } from "./main"
+import { pages } from "./pages"
+
+const rootElement = document.getElementById("root")
+
+if (!(rootElement instanceof HTMLDivElement)) {
+  throw new Error("Root element not found")
+}
+
+hydrate(
+  <PageProvider pages={pages}>
+    <Main />
+  </PageProvider>,
+  rootElement
+)
+```
+
+[Summary](#summary)
+
 ### PageTitle
 
 This component let's you use the page title set in the `pages` array of the provider directly into your markup. This is pretty much useful only when doing server-side rendering as displaying the markup for a meta is not necessary when using the client-side provider and is done automatically for you.
@@ -800,6 +797,8 @@ server.all("*", (request, response) => {
     <PageStaticProvider pages={pages} path={request.url}>
       <html lang="en-US">
         <head>
+          <meta charSet="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <PageTitle />
           <script src="/index.js" type="module"></script>
         </head>
@@ -861,6 +860,8 @@ server.all("*", (request, response) => {
     <PageStaticProvider pages={pages} path={request.url}>
       <html lang="en-US">
         <head>
+          <meta charSet="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <PageDescription />
           <script src="/index.js" type="module"></script>
         </head>
@@ -922,6 +923,8 @@ server.all("*", (request, response) => {
     <PageStaticProvider pages={pages} path={request.url}>
       <html lang="en-US">
         <head>
+          <meta charSet="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <PageMetas />
           <script src="/index.js" type="module"></script>
         </head>
