@@ -15,12 +15,14 @@ export default defineConfig({
     rollupOptions: {
       external: [
         "preact",
-        "preact/hooks"
+        "preact/hooks",
+        "preact/compat"
       ],
       output: {
         globals: {
           "preact": "preact",
-          "preact/hooks": "preact/hooks"
+          "preact/hooks": "preact/hooks",
+          "preact/compat": "preact/compat"
         }
       }
     }
