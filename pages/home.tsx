@@ -1,3 +1,5 @@
+import { lazy, Suspense } from "preact/compat"
+
 /**
  * MIT License
  * 
@@ -21,8 +23,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-export const HomePage = () => {
+export default () => {
   return (
-    <h1>Home page</h1>
+    <h1>Home</h1>
   )
 }

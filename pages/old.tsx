@@ -23,6 +23,6 @@
  */
 import { PageRedirect } from "../sources"
 
-export const OldPage = () => {
+export default () => {
   return <PageRedirect path="/" />
 }

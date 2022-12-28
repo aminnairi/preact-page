@@ -6,119 +6,123 @@ History Web API implementation for Preact written in TypeScript
 
 ## Summary
 
-- [Summary](#summary)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [API](#api)
-  - [PageProvider](#pageprovider)
-    - [Interface](#interface)
-    - [Example](#example)
-  - [PageView](#pageview)
-    - [Interface](#interface-1)
-    - [Example](#example-1)
-  - [PageLink](#pagelink)
-    - [Interface](#interface-2)
-    - [Example](#example-2)
-  - [PageRedirect](#pageredirect)
-    - [Interface](#interface-3)
-    - [Example](#example-3)
-  - [PageBack](#pageback)
-    - [Interface](#interface-4)
-    - [Example](#example-4)
-  - [PageForward](#pageforward)
-    - [Interface](#interface-5)
-    - [Example](#example-5)
-  - [PageGo](#pagego)
-    - [Interface](#interface-6)
-    - [Example](#example-6)
-  - [PageStaticProvider](#pagestaticprovider)
-    - [Interface](#interface-7)
-    - [Example](#example-7)
-  - [PageTitle](#pagetitle)
-    - [Interface](#interface-8)
-    - [Example](#example-8)
-  - [PageDescription](#pagedescription)
-    - [Interface](#interface-9)
-    - [Example](#example-9)
-  - [PageMetas](#pagemetas)
-    - [Interface](#interface-10)
-    - [Example](#example-10)
-  - [usePageLink](#usepagelink)
-    - [Interface](#interface-11)
-    - [Example](#example-11)
-  - [usePageBack](#usepageback)
-    - [Interface](#interface-12)
-    - [Example](#example-12)
-  - [usePageFoward](#usepagefoward)
-    - [Interface](#interface-13)
-    - [Example](#example-13)
-  - [usePageGo](#usepagego)
-    - [Interface](#interface-14)
-    - [Example](#example-14)
-  - [usePageParameters](#usepageparameters)
-    - [Interface](#interface-15)
-    - [Example](#example-15)
-  - [useBaseUrl](#usebaseurl)
-    - [Interface](#interface-16)
-    - [Example](#example-16)
-  - [usePageQuery](#usepagequery)
-    - [Interface](#interface-17)
-    - [Example](#example-17)
-  - [usePageHash](#usepagehash)
-    - [Interface](#interface-18)
-    - [Example](#example-18)
-  - [usePageHost](#usepagehost)
-    - [Interface](#interface-19)
-    - [Example](#example-19)
-  - [usePageHostName](#usepagehostname)
-    - [Interface](#interface-20)
-    - [Example](#example-20)
-  - [usePageUrl](#usepageurl)
-    - [Interface](#interface-21)
-    - [Example](#example-21)
-  - [usePageOrigin](#usepageorigin)
-    - [Interface](#interface-22)
-    - [Example](#example-22)
-  - [usePagePassword](#usepagepassword)
-    - [Interface](#interface-23)
-    - [Example](#example-23)
-  - [usePageUserName](#usepageusername)
-    - [Interface](#interface-24)
-    - [Example](#example-24)
-  - [usePagePath](#usepagepath)
-    - [Interface](#interface-25)
-    - [Example](#example-25)
-  - [usePageProtocol](#usepageprotocol)
-    - [Interface](#interface-26)
-    - [Example](#example-26)
-  - [usePagePort](#usepageport)
-    - [Interface](#interface-27)
-    - [Example](#example-27)
-  - [usePage](#usepage)
-    - [Interface](#interface-28)
-    - [Example](#example-28)
-  - [match](#match)
-    - [Interface](#interface-29)
-    - [Example](#example-29)
-  - [matchParameters](#matchparameters)
-    - [Interface](#interface-30)
-    - [Example](#example-30)
-  - [join](#join)
-    - [Interface](#interface-31)
-    - [Example](#example-31)
-  - [withParameters](#withparameters)
-    - [Interface](#interface-32)
-    - [Example](#example-32)
-  - [useReady](#useready)
-    - [Interface](#interface-33)
-    - [Example](#example-33)
-- [Issues](#issues)
-- [Changelog](#changelog)
-- [Code of conduct](#code-of-conduct)
-- [Contributing](#contributing)
-- [License](#license)
-- [Security](#security)
+- [preact-page](#preact-page)
+  - [Summary](#summary)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [API](#api)
+    - [PageProvider](#pageprovider)
+      - [Interface](#interface)
+      - [Example](#example)
+    - [PageView](#pageview)
+      - [Interface](#interface-1)
+      - [Example](#example-1)
+    - [PageLink](#pagelink)
+      - [Interface](#interface-2)
+      - [Example](#example-2)
+    - [PageRedirect](#pageredirect)
+      - [Interface](#interface-3)
+      - [Example](#example-3)
+    - [PageBack](#pageback)
+      - [Interface](#interface-4)
+      - [Example](#example-4)
+    - [PageForward](#pageforward)
+      - [Interface](#interface-5)
+      - [Example](#example-5)
+    - [PageGo](#pagego)
+      - [Interface](#interface-6)
+      - [Example](#example-6)
+    - [PageStaticProvider](#pagestaticprovider)
+      - [Interface](#interface-7)
+      - [Example](#example-7)
+    - [PageTitle](#pagetitle)
+      - [Interface](#interface-8)
+      - [Example](#example-8)
+    - [PageDescription](#pagedescription)
+      - [Interface](#interface-9)
+      - [Example](#example-9)
+    - [PageMetas](#pagemetas)
+      - [Interface](#interface-10)
+      - [Example](#example-10)
+    - [PageLazy](#pagelazy)
+      - [Interface](#interface-11)
+      - [Example](#example-11)
+    - [usePageLink](#usepagelink)
+      - [Interface](#interface-12)
+      - [Example](#example-12)
+    - [usePageBack](#usepageback)
+      - [Interface](#interface-13)
+      - [Example](#example-13)
+    - [usePageFoward](#usepagefoward)
+      - [Interface](#interface-14)
+      - [Example](#example-14)
+    - [usePageGo](#usepagego)
+      - [Interface](#interface-15)
+      - [Example](#example-15)
+    - [usePageParameters](#usepageparameters)
+      - [Interface](#interface-16)
+      - [Example](#example-16)
+    - [useBaseUrl](#usebaseurl)
+      - [Interface](#interface-17)
+      - [Example](#example-17)
+    - [usePageQuery](#usepagequery)
+      - [Interface](#interface-18)
+      - [Example](#example-18)
+    - [usePageHash](#usepagehash)
+      - [Interface](#interface-19)
+      - [Example](#example-19)
+    - [usePageHost](#usepagehost)
+      - [Interface](#interface-20)
+      - [Example](#example-20)
+    - [usePageHostName](#usepagehostname)
+      - [Interface](#interface-21)
+      - [Example](#example-21)
+    - [usePageUrl](#usepageurl)
+      - [Interface](#interface-22)
+      - [Example](#example-22)
+    - [usePageOrigin](#usepageorigin)
+      - [Interface](#interface-23)
+      - [Example](#example-23)
+    - [usePagePassword](#usepagepassword)
+      - [Interface](#interface-24)
+      - [Example](#example-24)
+    - [usePageUserName](#usepageusername)
+      - [Interface](#interface-25)
+      - [Example](#example-25)
+    - [usePagePath](#usepagepath)
+      - [Interface](#interface-26)
+      - [Example](#example-26)
+    - [usePageProtocol](#usepageprotocol)
+      - [Interface](#interface-27)
+      - [Example](#example-27)
+    - [usePagePort](#usepageport)
+      - [Interface](#interface-28)
+      - [Example](#example-28)
+    - [usePage](#usepage)
+      - [Interface](#interface-29)
+      - [Example](#example-29)
+    - [match](#match)
+      - [Interface](#interface-30)
+      - [Example](#example-30)
+    - [matchParameters](#matchparameters)
+      - [Interface](#interface-31)
+      - [Example](#example-31)
+    - [join](#join)
+      - [Interface](#interface-32)
+      - [Example](#example-32)
+    - [withParameters](#withparameters)
+      - [Interface](#interface-33)
+      - [Example](#example-33)
+    - [useReady](#useready)
+      - [Interface](#interface-34)
+      - [Example](#example-34)
+  - [Issues](#issues)
+  - [Changelog](#changelog)
+  - [Code of conduct](#code-of-conduct)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Security](#security)
 
 ## Requirements
 
@@ -161,17 +165,16 @@ render(
 
 ```tsx
 import { PageView } from "preact-page"
-import { NotFoundPage } from "./pages/not-found"
 
 export const Main = () => {
   return (
-    <PageView fallback={<NotFoundPage />} />
+    <PageView />
   )
 }
 ```
 
 ```tsx
-export const HomePage = () => {
+export default () => {
   return (
     <h1>Home page</h1>
   )
@@ -179,16 +182,8 @@ export const HomePage = () => {
 ```
 
 ```tsx
-export const NotFoundPage = () => {
-  return (
-    <h1>Not found</h1>
-  )
-}
-```
-
-```tsx
-import { HomePage } from "./home"
 import { PagesInterface } from "preact-page";
+import HomePage from "./home"
 
 export const pages: PagesInterface = [
   {
@@ -267,10 +262,41 @@ render(
 
 ```tsx
 import { PagesInterface } from "preact-page"
-import { HomePage } from "./home"
-import { AboutPage } from "./about";
-import { UserPage } from "./user";
-import { UsersPage } from "./users";
+import HomePage from "./home"
+import AboutPage from "./about";
+import UserPage from "./user";
+import UsersPage from "./users";
+
+export const pages: PagesInterface = [
+  {
+    path: "/",
+    element: <HomePage />
+  },
+  {
+    path: "/about",
+    element: <AboutPage />
+  },
+  {
+    path: "/users",
+    element: <UsersPage />
+  },
+  {
+    path: "/users/:user",
+    element: <UserPage />
+  }
+]
+```
+
+With lazy loaded routes.
+
+```tsx
+import { PagesInterface } from "preact-page"
+import { lazy } from "preact/compat"
+
+const HomePage = lazy(() => import("./home"))
+const AboutPage = lazy(() => import("./about"))
+const UserPage = lazy(() => import("./user"))
+const UsersPage = lazy(() => import("./users"))
 
 export const pages: PagesInterface = [
   {
@@ -296,10 +322,10 @@ You can also provide a title.
 
 ```tsx
 import { PagesInterface } from "preact-page"
-import { HomePage } from "./home"
-import { AboutPage } from "./about";
-import { UserPage } from "./user";
-import { UsersPage } from "./users";
+import HomePage from "./home"
+import AboutPage from "./about";
+import UserPage from "./user";
+import UsersPage from "./users";
 
 export const pages: PagesInterface = [
   {
@@ -329,10 +355,10 @@ And a description.
 
 ```tsx
 import { PagesInterface } from "preact-page"
-import { HomePage } from "./home"
-import { AboutPage } from "./about";
-import { UserPage } from "./user";
-import { UsersPage } from "./users";
+import HomePage from "./home"
+import AboutPage from "./about";
+import UserPage from "./user";
+import UsersPage from "./users";
 
 export const pages: PagesInterface = [
   {
@@ -366,10 +392,10 @@ And even some additional per-page metas a description.
 
 ```tsx
 import { PagesInterface } from "preact-page"
-import { HomePage } from "./home"
-import { AboutPage } from "./about";
-import { UserPage } from "./user";
-import { UsersPage } from "./users";
+import HomePage from "./home"
+import AboutPage from "./about";
+import UserPage from "./user";
+import UsersPage from "./users";
 
 export const pages: PagesInterface = [
   {
@@ -428,7 +454,8 @@ This is where the library will inject the matching element for a given path. You
 import { ComponentChildrenn, FunctionComponent } from "preact"
 
 export interface PageViewInterface {
-    fallback: ComponentChildren;
+    fallback?: ComponentChildren
+    loading?: ComponentChildren
 }
 
 export declare const PageView: FunctionComponent<PageViewInterface>;
@@ -440,7 +467,27 @@ export declare const PageView: FunctionComponent<PageViewInterface>;
 
 ```tsx
 import { PageView } from "preact-page"
-import { NotFoundPage } from "./pages/not-found"
+
+export const Main = () => {
+  return (
+    <PageView />
+  )
+}
+```
+
+With a fallback page
+
+```tsx
+export default () => {
+  return (
+    <h1>Not found</h1>
+  )
+}
+```
+
+```tsx
+import { PageView } from "preact-page"
+import NotFoundPage from "./pages/not-found"
 
 export const Main = () => {
   return (
@@ -449,10 +496,23 @@ export const Main = () => {
 }
 ```
 
+With a loading page for lazy pages.
+
 ```tsx
-export const NotFoundPage = () => {
+export const Loading = () => {
   return (
-    <h1>Not found</h1>
+    <h1>Loading...</h1>
+  )
+}
+```
+
+```tsx
+import { PageView } from "preact-page"
+import { Loading } from "./components/loading"
+
+export const Main = () => {
+  return (
+    <PageView loading={<Loading />} />
   )
 }
 ```
@@ -541,7 +601,7 @@ export declare const PageRedirect: FunctionComponent<PageRedirectInterface>;
 ```tsx
 import { PageRedirect } from "preact-page"
 
-export const OldPage = () => {
+export default () => {
   return (
     <PageRedirect path="/" />
   )
@@ -551,7 +611,7 @@ export const OldPage = () => {
 ```tsx
 import { PageRedirect } from "preact-page"
 
-export const LogoutPage = () => {
+export default () => {
   return (
     <PageRedirect path="/login" replace />
   )
@@ -581,7 +641,7 @@ export declare const PageBack: FunctionComponent;
 ```tsx
 import { PageBack } from "preact-page"
 
-export const AdministrationPage = () => {
+export default () => {
   return (
     <PageBack />
   )
@@ -611,7 +671,7 @@ export declare const PageForward: FunctionComponent;
 ```tsx
 import { PageForward } from "preact-page"
 
-export const AdministrationPage = () => {
+export default () => {
   return (
     <PageForward />
   )
@@ -645,7 +705,7 @@ export declare const PageGo: FunctionComponent<PageGoInterface>;
 ```tsx
 import { PageGo } from "preact-page"
 
-export const AdministrationPage = () => {
+export default () => {
   return (
     <PageGo offset={2} />
   )
@@ -655,7 +715,7 @@ export const AdministrationPage = () => {
 ```tsx
 import { PageGo } from "preact-page"
 
-export const BlogPage = () => {
+export default () => {
   return (
     <PageGo offset={-2} />
   )
@@ -691,7 +751,7 @@ export declare const PageStaticProvider: FunctionComponent<PageStaticProviderInt
 #### Example
 
 ```tsx
-import express, { Request, Response } from "express"
+import express from "express"
 import { PageStaticProvider } from "preact-page"
 import { render } from "preact-render-to-string"
 import { Main } from "../client/main"
@@ -775,7 +835,7 @@ export declare const PageTitle: FunctionComponent;
 #### Example
 
 ```tsx
-import express, { Request, Response } from "express"
+import express from "express"
 import { PageStaticProvider, PageTitle } from "preact-page"
 import { render } from "preact-render-to-string"
 import { Main } from "../client/main"
@@ -838,7 +898,7 @@ export declare const PageDescription: FunctionComponent;
 #### Example
 
 ```tsx
-import express, { Request, Response } from "express"
+import express from "express"
 import { PageStaticProvider, PageDescription } from "preact-page"
 import { render } from "preact-render-to-string"
 import { Main } from "../client/main"
@@ -901,7 +961,7 @@ export declare const PageMetas: FunctionComponent;
 #### Example
 
 ```tsx
-import express, { Request, Response } from "express"
+import express from "express"
 import { PageStaticProvider, PageMetas } from "preact-page"
 import { render } from "preact-render-to-string"
 import { Main } from "../client/main"
@@ -1109,7 +1169,7 @@ export declare const usePageParameters: () => PageParameters;
 ```tsx
 import { usePageParameters } from "preact-page"
 
-export const UserPage = () => {
+export default () => {
   const { user } = usePageParameters()
 
   return (
@@ -1139,7 +1199,7 @@ export declare const useBaseUrl: () => string;
 ```tsx
 import { useBaseUrl } from "preact-page"
 
-export const HomePage = () => {
+export default () => {
   const baseUrl = useBaseUrl()
   
   return (
@@ -1171,7 +1231,7 @@ export declare const usePageQuery: () => Record<string, string | undefined>;
 ```tsx
 import { usePageQuery } from "preact-page"
 
-export const UsersPage = () => {
+export default () => {
   const { sort } = usePageQuery()
 
   return (
@@ -1517,7 +1577,7 @@ export declare const usePage: () => PageInterface | undefined;
 ```tsx
 import { usePage } from "preact-page"
 
-export const HomePage = () => {
+export default () => {
   const page = usePage()
   
   useEffect(() => {

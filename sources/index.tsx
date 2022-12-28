@@ -23,6 +23,7 @@
  */
 import { ComponentChildren, createContext, Fragment, FunctionComponent, JSX } from "preact"
 import { useCallback, useContext, useEffect, useMemo, useState } from "preact/hooks"
+import { lazy, Suspense } from "preact/compat"
 
 export const withParameters = (path: string, parameters: Record<string, string>) => {
   return Object.entries(parameters).reduce((computedPath, [parameterName, parameterValue]) => {
@@ -327,17 +328,38 @@ export const PageStaticProvider: FunctionComponent<PageStaticProviderInterface> 
 }
 
 export interface PageViewInterface {
-  fallback: ComponentChildren
+  fallback?: ComponentChildren
+  loading?: ComponentChildren
 }
 
-export const PageView: FunctionComponent<PageViewInterface> = ({ fallback }) => {
+export const PageView: FunctionComponent<PageViewInterface> = ({ fallback, loading }) => {
   const { page } = useContext(PageContext)
 
   if (page?.element) {
-    return page.element as JSX.Element
+    if (loading) {
+      return (
+        <Suspense fallback={loading}>
+          {page.element}
+        </Suspense>
+      )
+    }
+
+    return (
+      <Suspense fallback={null}>
+        {page.element}
+      </Suspense>
+    )
   }
 
-  return fallback as JSX.Element
+  if (fallback) {
+    return (
+      <Fragment>
+        {fallback}
+      </Fragment>
+    )
+  }
+
+  return null
 }
 
 export const usePageLink = () => useContext(PageContext).pageLink
@@ -562,4 +584,19 @@ export const PageGo: FunctionComponent<PageGoInterface> = ({ offset }) => {
   }, [offset, pageGo])
 
   return null
+}
+
+export interface PageLazyInterface {
+  path: string
+  fallback: ComponentChildren
+}
+
+export const PageLazy = ({ path, fallback }: PageLazyInterface) => {
+  const Component = lazy(() => import(path))
+  
+  return (
+    <Suspense fallback={fallback}>
+      <Component />
+    </Suspense>
+  )
 }
