@@ -46,22 +46,37 @@ export const path = {
 export const pages: PagesInterface = [
   {
     path: path.home,
+    title: () => "Home",
+    description: () => "Home page description",
+    metas: [],
     element: <HomePage />
-  },
+    },
   {
     path: path.about,
+    title: () => "About",
+    description: () => "About page description",
+    metas: [],
     element: <AboutPage />
     },
   {
     path: path.users,
+    title: () => "Users",
+    description: () => "Users page description",
+    metas: [],
     element: <UsersPage />
     },
   {
     path: path.user.plain,
+    title: (parameters) => `User#${parameters.user}`,
+    description: (parameters) => `User#${parameters.user} details page description`,
+    metas: [],
     element: <UserPage />
-    },
+  },
   {
     path: path.old,
+    title: () => "Old",
+    description: () => "Old page description",
+    metas: [],
     element: <OldPage />
   }
 ]
