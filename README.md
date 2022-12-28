@@ -194,18 +194,28 @@ export const pages: PagesInterface = [
 
 ### PageProvider
 
-This is the component that should be on top of all of the components in which you wish to use the other library's components & hooks. You can also set a base URL in case you are using this router in a sub-page like GitHub Pages or GitLab Pages. Routes do not have to use the base URL in the `pages` array since it is automatically handled by all the components & hooks for you.
+This is the component that should be on top of all of the components in which you wish to use the other library's components & hooks. You can also set a base URL in case you are using this router in a sub-page like GitHub Pages or GitLab Pages. Routes do not have to use the base URL in the `pages` array since it is automatically handled by all the components & hooks for you. Any title, description or meta is automatically added for you so you don't have to do anything for this part.
 
 [Summary](#summary)
 
 #### Interface
 
 ```typescript
-import { FunctionComponent } from "preact"
+import { FunctionComponent, ComponentChildren } from "preact"
+
+export type PageParameters = Record<string, string | undefined>
+
+export interface PageMetaInterface {
+  name: string
+  content: string
+}
 
 export interface PageInterface {
-    path: string;
-    element: ComponentChildren;
+  path: string
+  title?: (parameters: PageParameters) => string
+  description?: (parameters: PageParameters) => string
+  metas?: Array<(parameters: PageParameters) => PageMetaInterface>
+  element: ComponentChildren
 }
 
 export type PagesInterface = Array<PageInterface>;
@@ -244,12 +254,13 @@ render(
 ```
 
 ```tsx
+import { PagesInterface } from "preact-page"
 import { HomePage } from "./home"
 import { AboutPage } from "./about";
 import { UserPage } from "./user";
 import { UsersPage } from "./users";
 
-export const pages = [
+export const pages: PagesInterface = [
   {
     path: "/",
     element: <HomePage />
@@ -264,6 +275,128 @@ export const pages = [
   },
   {
     path: "/users/:user",
+    element: <UserPage />
+  }
+]
+```
+
+You can also provide a title.
+
+```tsx
+import { PagesInterface } from "preact-page"
+import { HomePage } from "./home"
+import { AboutPage } from "./about";
+import { UserPage } from "./user";
+import { UsersPage } from "./users";
+
+export const pages: PagesInterface = [
+  {
+    path: "/",
+    title: () => "Home",
+    element: <HomePage />
+  },
+  {
+    path: "/about",
+    title: () => "About",
+    element: <AboutPage />
+  },
+  {
+    path: "/users",
+    title: () => "Users",
+    element: <UsersPage />
+  },
+  {
+    path: "/users/:user",
+    title: ({ user }) => `User#${user}`
+    element: <UserPage />
+  }
+]
+```
+
+And a description.
+
+```tsx
+import { PagesInterface } from "preact-page"
+import { HomePage } from "./home"
+import { AboutPage } from "./about";
+import { UserPage } from "./user";
+import { UsersPage } from "./users";
+
+export const pages: PagesInterface = [
+  {
+    path: "/",
+    title: () => "Home",
+    description: () => "Home page description",
+    element: <HomePage />
+  },
+  {
+    path: "/about",
+    title: () => "About",
+    description: () => "About page description",
+    element: <AboutPage />
+  },
+  {
+    path: "/users",
+    title: () => "Users",
+    description: () => "Users page description",
+    element: <UsersPage />
+  },
+  {
+    path: "/users/:user",
+    title: ({ user }) => `User#${user}`
+    description: ({ user }) => `User#${user} details page description`,
+    element: <UserPage />
+  }
+]
+```
+
+And even some additional per-page metas a description.
+
+```tsx
+import { PagesInterface } from "preact-page"
+import { HomePage } from "./home"
+import { AboutPage } from "./about";
+import { UserPage } from "./user";
+import { UsersPage } from "./users";
+
+export const pages: PagesInterface = [
+  {
+    path: "/",
+    title: () => "Home",
+    description: () => "Home page description",
+    metas: [
+      () => ({ name: "theme-color", content: "#ffffff" })
+    ],
+    element: <HomePage />
+  },
+  {
+    path: "/about",
+    title: () => "About",
+    description: () => "About page description",
+    metas: [
+      () => ({ name: "theme-color", content: "#000000" })
+    ],
+    element: <AboutPage />
+  },
+  {
+    path: "/users",
+    title: () => "Users",
+    description: () => "Users page description",
+    metas: [
+      () => ({ name: "theme-color", content: "#ffffff" })
+    ],
+    element: <UsersPage />
+  },
+  {
+    path: "/users/:user",
+    title: ({ user }) => `User#${user}`
+    description: ({ user }) => `User#${user} details page description`,
+    metas: [
+      ({ user }) => ({
+        name: "theme-color",
+        content: user === "1" ? "#ff00ff" : "#ffffff"
+      })
+    ],
     element: <UserPage />
   }
 ]
@@ -614,6 +747,186 @@ export const BlogPage = () => {
 
 [Summary](#summary)
 
+### PageTitle
+
+This component let's you use the page title set in the `pages` array of the provider directly into your markup. This is pretty much useful only when doing server-side rendering as displaying the markup for a meta is not necessary when using the client-side provider and is done automatically for you.
+
+[Summary](#summary)
+
+#### Interface
+
+```typescript
+import { FunctionComponent } from "preact"
+
+export declare const PageTitle: FunctionComponent;
+```
+
+[Summary](#summary)
+
+#### Example
+
+```tsx
+import express, { Request, Response } from "express"
+import { PageStaticProvider, PageTitle } from "preact-page"
+import { render } from "preact-render-to-string"
+import { Main } from "../client/main"
+import { pages } from "../client/pages"
+
+const server = express()
+
+server.get("/api/users", (request, response) => {
+  response.json({
+    success: true,
+    users: []
+  })
+})
+
+server.use(express.static("build/client"))
+
+server.all("*", (request, response) => {
+  response.set("Content-Type", "text/html").send("<!DOCTYPE html>" + render(
+    <PageStaticProvider pages={pages} path={request.url}>
+      <html lang="en-US">
+        <head>
+          <PageTitle />
+        </head>
+        <body>
+          <div id="root">
+            <Main />
+          </div>
+        </body>
+      </html>
+    </PageStaticProvider>
+  ))
+})
+
+server.listen(8000, () => {
+  console.log("Server listening on http://localhost:8000")
+})
+```
+
+[Summary](#summary)
+
+### PageDescription
+
+This component let's you use the page descriptioon set in the `pages` array of the provider directly into your markup. This is pretty much useful only when doing server-side rendering as displaying the markup for a meta is not necessary when using the client-side provider and is done automatically for you.
+
+[Summary](#summary)
+
+#### Interface
+
+```typescript
+import { FunctionComponent } from "preact"
+
+export declare const PageDescription: FunctionComponent;
+```
+
+[Summary](#summary)
+
+#### Example
+
+```tsx
+import express, { Request, Response } from "express"
+import { PageStaticProvider, PageDescription } from "preact-page"
+import { render } from "preact-render-to-string"
+import { Main } from "../client/main"
+import { pages } from "../client/pages"
+
+const server = express()
+
+server.get("/api/users", (request, response) => {
+  response.json({
+    success: true,
+    users: []
+  })
+})
+
+server.use(express.static("build/client"))
+
+server.all("*", (request, response) => {
+  response.set("Content-Type", "text/html").send("<!DOCTYPE html>" + render(
+    <PageStaticProvider pages={pages} path={request.url}>
+      <html lang="en-US">
+        <head>
+          <PageDescription />
+        </head>
+        <body>
+          <div id="root">
+            <Main />
+          </div>
+        </body>
+      </html>
+    </PageStaticProvider>
+  ))
+})
+
+server.listen(8000, () => {
+  console.log("Server listening on http://localhost:8000")
+})
+```
+
+[Summary](#summary)
+
+### PageMetas
+
+This component let's you use the metas set in the `pages` array of the provider directly into your markup. This is pretty much useful only when doing server-side rendering as displaying the markup for a meta is not necessary when using the client-side provider and is done automatically for you.
+
+[Summary](#summary)
+
+#### Interface
+
+```typescript
+import { FunctionComponent } from "preact"
+
+export declare const PageMetas: FunctionComponent;
+```
+
+[Summary](#summary)
+
+#### Example
+
+```tsx
+import express, { Request, Response } from "express"
+import { PageStaticProvider, PageMetas } from "preact-page"
+import { render } from "preact-render-to-string"
+import { Main } from "../client/main"
+import { pages } from "../client/pages"
+
+const server = express()
+
+server.get("/api/users", (request, response) => {
+  response.json({
+    success: true,
+    users: []
+  })
+})
+
+server.use(express.static("build/client"))
+
+server.all("*", (request, response) => {
+  response.set("Content-Type", "text/html").send("<!DOCTYPE html>" + render(
+    <PageStaticProvider pages={pages} path={request.url}>
+      <html lang="en-US">
+        <head>
+          <PageMetas />
+        </head>
+        <body>
+          <div id="root">
+            <Main />
+          </div>
+        </body>
+      </html>
+    </PageStaticProvider>
+  ))
+})
+
+server.listen(8000, () => {
+  console.log("Server listening on http://localhost:8000")
+})
+```
+
+[Summary](#summary)
+
 ### usePageLink
 
 This hook let's you use the function that is used internally by the `<PageLink>` component to navigate programmatically in the history. Note that if you are using a base URL, you don't have to account for the base URL in the given path to the `pageLink` function since it is handled automatically for you at runtime.
@@ -766,7 +1079,9 @@ This hook let's you use the parameters that have been setup when adding a route.
 #### Interface
 
 ```typescript
-export declare const usePageParameters: () => Record<string, string | undefined>;
+export type PageParameters = Record<string, string | undefined>
+
+export declare const usePageParameters: () => PageParameters;
 ```
 
 [Summary](#summary)
@@ -1150,6 +1465,57 @@ const HomePage = () => {
 
 [Summary](#summary)
 
+### usePage
+
+This hooks let's you get the page that is currently matched by the provider. This is a hook that is useful internally for working with server side render for instance, but this might not be very interesting to use from the point-of-view of the user of this library. This is still available for completeness.
+
+[Summary](#summary)
+
+#### Interface
+
+```typescript
+import { ComponentChildren } from "preact"
+
+export interface PageMetaInterface {
+  name: string
+  content: string
+}
+
+export interface PageInterface {
+  path: string
+  title?: (parameters: PageParameters) => string
+  description?: (parameters: PageParameters) => string
+  metas?: Array<(parameters: PageParameters) => PageMetaInterface>
+  element: ComponentChildren
+}
+
+export declare const usePage: () => PageInterface | undefined;
+```
+
+[Summary](#summary)
+
+#### Example
+
+```tsx
+import { usePage } from "preact-page"
+
+export const HomePage = () => {
+  const page = usePage()
+  
+  useEffect(() => {
+    if (page) {
+      console.log(page.path)
+    }
+  }, [page])
+
+  return (
+    <h1>Home page</h1>
+  )
+}
+```
+
+[Summary](#summary)
+
 ### match
 
 This function let's you match a URL that looks like a path you set in the `pages` like `/users/:user` with some parameters eventually. It will be matched against another path which is a concrete path, like the path of your URL. This function is used internally to match URLs and should not be used in a regular basis. It is exposed for completeness purposes and in the hope that it may be useful if you need to extend the capabilities of this library.
@@ -1185,7 +1551,9 @@ This function let's you get the parameters of a URL that looks like a path you s
 #### Interface
 
 ```typescript
-export declare const matchParameters: (route: string, path: string) => Record<string, string | undefined>;
+export type PageParameters = Record<string, string | undefined>
+
+export declare const matchParameters: (route: string, path: string) => PageParameters;
 ```
 
 [Summary](#summary)
