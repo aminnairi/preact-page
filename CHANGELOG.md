@@ -2,6 +2,7 @@
 
 ## Versions
 
+- [`1.4.0`](#140)
 - [`1.3.0`](#130)
 - [`1.2.0`](#120)
 - [`1.1.0`](#110)
@@ -11,127 +12,50 @@
 - [`0.2.0`](#020)
 - [`0.1.0`](#010)
 
+## 1.4.0
+
+- Accounting for lazy components in the PageView and the pages ([#42](https://github.com/aminnairi/preact-page/pull/42))
+
 ## 1.3.0
 
-### Major changes
-
-None.
-
-### Minor changes
-
-- New feature for setting the page title [#37](https://github.com/aminnairi/preact-page/issues/37)
-- New feature for setting meta informations ([#38](https://github.com/aminnairi/preact-page/issues/38))
-
-### Bug & security fixes
-
-None.
+- Added components for server-side rendering of the title, description & metas ([#39](https://github.com/aminnairi/preact-page/pull/39))
 
 ## 1.2.0
 
-### Major changes
-
-None.
-
-### Minor changes
-
-- New feature for more documentation for the hydration ([#34](https://github.com/aminnairi/preact-page/issues/34))
-- New feature for using the MIT license instead of GPL [#33](https://github.com/aminnairi/preact-page/issues/33)
-
-### Bug & security fixes
-
-None.
+- Added documentation for the hydration on the client side ([#35](https://github.com/aminnairi/preact-page/pull/35))
+- Using MIT license instead of GPL-3.0 ([#36](https://github.com/aminnairi/preact-page/pull/36))
 
 ## 1.1.0
 
-### Major changes
-
-None.
-
-### Minor changes
-
-- New feature for adding a new provider for server side rendering ([#31](https://github.com/aminnairi/preact-page/issues/31))
-
-### Bug & security fixes
-
-None.
+- Added support for server side rendering ([#32](https://github.com/aminnairi/preact-page/pull/32))
 
 ## 1.0.0
 
-### Major changes
-
-- Better name for the usePageSearchParameters ([#10](https://github.com/aminnairi/preact-page/issues/10))
-
-### Minor changes
-
-None.
-
-### Bug & security fixes
-
-None.
+- Updated the name of the hook responsible for getting query parameters ([#30](https://github.com/aminnairi/preact-page/pull/30))
 
 ## 0.3.0
 
-### Major changes
-
-None.
-
-### Minor changes
-
-- Enhancement for the parameter pollution cleaning ([#9](https://github.com/aminnairi/preact-page/issues/9))
-- Enhancement for functions that use boolean parameters ([#11](https://github.com/aminnairi/preact-page/issues/11))
-- New feature for having a summary with redirection links ([#12](https://github.com/aminnairi/preact-page/issues/12))
-- New feature for using paths with parameters ([#13](https://github.com/aminnairi/preact-page/issues/13))
-- New feature for having a link for the types included badge ([#16](https://github.com/aminnairi/preact-page/issues/16))
-- New feature for having a link for the package size badge [#17](https://github.com/aminnairi/preact-page/issues/17)
-- New feature for auditing package for vulnerabilities on push [#22](https://github.com/aminnairi/preact-page/issues/22)
-
-### Bug & security fixes
-
-None.
+- Added documentation for the HTTP parameter pollution ([#23](https://github.com/aminnairi/preact-page/pull/23))
+- Using the shorthand version for jsx boolean properties ([#24](https://github.com/aminnairi/preact-page/pull/24))
+- Added documentation summary ([#25](https://github.com/aminnairi/preact-page/pull/25))
+- Added a new function to create dynamic paths with parameters ([#26](https://github.com/aminnairi/preact-page/pull/26))
+- Added a link for the type definition badge ([#27](https://github.com/aminnairi/preact-page/pull/27))
+- Added a link for the size badge ([#28](https://github.com/aminnairi/preact-page/pull/28))
+- Running an audit when triggering the continuous integration tests ([#29](https://github.com/aminnairi/preact-page/pull/29))
 
 ## 0.2.1
 
-### Major changes
-
-None.
-
-### Minor changes
-
-None.
-
-### Bug & security fixes
-
-- Issue with the activeClassName matching all dynamic routes ([#14](https://github.com/aminnairi/preact-page/issues/14))
-- Issue with dangling console log ([#15](https://github.com/aminnairi/preact-page/issues/15))
-- Issue with missing imports in the documentation ([#18](https://github.com/aminnairi/preact-page/issues/18))
+- Fix for multiple `PageLink` that have an `activeClassName` on dynamic routes ([#19](https://github.com/aminnairi/preact-page/pull/19))
+- Removed dangling console logs ([#20](https://github.com/aminnairi/preact-page/pull/20))
+- Fixed missing and unecessary imports in the documentation ([#21](https://github.com/aminnairi/preact-page/pull/21))
 
 ## 0.2.0
 
-### Major changes
-
-None.
-
-### Minor changes
-
-- New feature for having a base url ([#1](https://github.com/aminnairi/preact-page/issues/1))
-- Enhancement for the documentation ([#2](https://github.com/aminnairi/preact-page/issues/2))
-- New feature for checking that the build step is passing ([#3](https://github.com/aminnairi/preact-page/issues/3))
-- New feature for having a typescript badge ([#7](https://github.com/aminnairi/preact-page/issues/7))
-
-### Bug & security fixes
-
-None.
+- Added a new option for using base URLs ([#4](https://github.com/aminnairi/preact-page/pull/4))
+- Added more documentation for all exposed functions, hooks & components ([#5](https://github.com/aminnairi/preact-page/pull/5))
+- Added a workflow to check that the pack is passing ([#6](https://github.com/aminnairi/preact-page/pull/6))
+- Added a badge to quickly know that this library uses type definitions ([#8](https://github.com/aminnairi/preact-page/pull/8)))
 
 ## 0.1.0
 
-### Major changes
-
-None.
-
-### Minor changes
-
-None.
-
-### Bug & security fixes
-
-None.
+- Initial release
