@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-import { ComponentChildren, createContext, FunctionComponent, JSX } from "preact"
+import { ComponentChildren, createContext, Fragment, FunctionComponent, JSX } from "preact"
 import { useCallback, useContext, useEffect, useMemo, useState } from "preact/hooks"
 
 export const withParameters = (path: string, parameters: Record<string, string>) => {
@@ -55,7 +55,7 @@ export const match = (route: string, path: string): boolean => {
   })
 }
 
-export const matchParameters = (route: string, path: string): Record<string, string | undefined> => {
+export const matchParameters = (route: string, path: string): PageParameters => {
   const routeParts = new URL(`http://localhost/${route}`).pathname.split("/").filter(Boolean)
   const pathParts = new URL(`http://localhost/${path}`).pathname.split("/").filter(Boolean)
   const parameters = {}
@@ -72,15 +72,25 @@ export const matchParameters = (route: string, path: string): Record<string, str
   }, parameters)
 }
 
+export type PageParameters = Record<string, string | undefined>
+
+export interface PageMetaInterface {
+  name: string
+  content: string
+}
+
 export interface PageInterface {
   path: string
+  title?: (parameters: PageParameters) => string
+  description?: (parameters: PageParameters) => string
+  metas?: Array<(parameters: PageParameters) => PageMetaInterface>
   element: ComponentChildren
 }
 
 export type PagesInterface = Array<PageInterface>
 
 export interface PageContextInterface {
-  parameters: Record<string, string | undefined>
+  parameters: PageParameters
   page?: PageInterface
   pageLink: (path: string, replace?: boolean) => void
   pageBack: () => void
@@ -95,6 +105,9 @@ export const PageContext = createContext<PageContextInterface>({
   parameters: {},
   page: {
     path: "",
+    title: () => "",
+    description: () => "",
+    metas: [],
     element: () => null
   },
   url: new URL("http://localhost"),
@@ -181,7 +194,7 @@ export const PageProvider: FunctionComponent<PageProviderInterface> = ({ childre
     pageGo,
     ready,
     url,
-    baseUrl
+    baseUrl,
   }), [parameters, page, pageLink, pageBack, pageForward, pageGo, ready, url, baseUrl])
 
   useEffect(() => {
@@ -205,6 +218,49 @@ export const PageProvider: FunctionComponent<PageProviderInterface> = ({ childre
       setReady(false)
     }
   }, [])
+
+  useEffect(() => {
+    if (page) {
+      const titleElement = document.querySelector("title")
+      const descriptionElement = document.querySelector("meta[name='description']")
+
+      if (page.title) {
+        if (titleElement) {
+          titleElement.innerText = page.title(parameters)
+        } else {
+          const titleElement = document.createElement("title")
+          titleElement.innerText = page.title(parameters)
+          document.head.appendChild(titleElement)
+        }
+      }
+
+      if (page.description) {
+        if (descriptionElement) {
+          descriptionElement.setAttribute("content", page.description(parameters))
+        } else {
+          const descriptionElement = document.createElement("meta")
+          descriptionElement.setAttribute("name", "description")
+          descriptionElement.setAttribute("content", page.description(parameters))
+          document.head.appendChild(descriptionElement)
+        }
+      }
+
+      if (page.metas) {
+        page.metas.forEach(getPageMeta => {
+          const pageMeta = getPageMeta(parameters)
+          const pageMetaElement = document.querySelector(`meta[name="${pageMeta.name}"]`)
+
+          if (pageMetaElement) {
+            pageMetaElement.setAttribute("content", pageMeta.content)
+          } else {
+            const pageMetaElement = document.createElement("meta")
+            pageMetaElement.setAttribute("name", pageMeta.name)
+            pageMetaElement.setAttribute("content", pageMeta.content)
+          }
+        })
+      }
+    }
+  }, [page, parameters])
 
   return (
     <PageContext.Provider value={value}>
@@ -260,7 +316,7 @@ export const PageStaticProvider: FunctionComponent<PageStaticProviderInterface> 
     pageGo,
     parameters,
     baseUrl,
-    page
+    page,
   }), [url, ready, pageLink, pageBack, pageForward, pageGo, parameters, baseUrl, page])
 
   return (
@@ -296,10 +352,59 @@ export const useReady = () => useContext(PageContext).ready
 
 export const useBaseUrl = () => useContext(PageContext).baseUrl
 
+export const usePage = () => useContext(PageContext).page
+
 export interface PageLinkProps {
   path: string
   replace?: boolean
   activeClassName?: string
+}
+
+export const PageTitle: FunctionComponent = () => {
+  const page = usePage()
+  const pageParameters = usePageParameters()
+
+  if (!page || !page.title) {
+    return null
+  }
+
+  return (
+    <title>{page.title(pageParameters)}</title>
+  )
+}
+
+export const PageDescription: FunctionComponent = () => {
+  const page = usePage()
+  const pageParameters = usePageParameters()
+
+  if (!page || !page.description) {
+    return null
+  }
+
+  return (
+    <meta name="description" content={page.description(pageParameters)} />
+  )
+}
+
+export const PageMetas: FunctionComponent = () => {
+  const page = usePage()
+  const pageParameters = usePageParameters()
+
+  if (!page || !page.metas) {
+    return null
+  }
+
+  return (
+    <Fragment>
+      {page.metas.map(getPageMeta => {
+        const pageMeta = getPageMeta(pageParameters)
+
+        return (
+          <meta name={pageMeta.name} content={pageMeta.content} />
+          )
+      })}
+    </Fragment> 
+  )
 }
 
 export const PageLink: FunctionComponent<PageLinkProps> = ({ path, replace, activeClassName, children }) => {
