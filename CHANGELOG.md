@@ -2,12 +2,28 @@
 
 ## Versions
 
+- [`1.2.0`](#120)
 - [`1.1.0`](#110)
 - [`1.0.0`](#100)
 - [`0.3.0`](#030)
 - [`0.2.1`](#021)
 - [`0.2.0`](#020)
 - [`0.1.0`](#010)
+
+## 1.2.0
+
+### Major changes
+
+None.
+
+### Minor changes
+
+- New feature for more documentation for the hydration ([#34](https://github.com/aminnairi/preact-page/issues/34))
+- New feature for using the MIT license instead of GPL [#33](https://github.com/aminnairi/preact-page/issues/33)
+
+### Bug & security fixes
+
+None.
 
 ## 1.1.0
 
