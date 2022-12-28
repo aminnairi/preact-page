@@ -2,6 +2,7 @@
 
 ## Versions
 
+- [`1.3.0`](#130)
 - [`1.2.0`](#120)
 - [`1.1.0`](#110)
 - [`1.0.0`](#100)
@@ -9,6 +10,21 @@
 - [`0.2.1`](#021)
 - [`0.2.0`](#020)
 - [`0.1.0`](#010)
+
+## 1.3.0
+
+### Major changes
+
+None.
+
+### Minor changes
+
+- New feature for setting the page title [#37](https://github.com/aminnairi/preact-page/issues/37)
+- New feature for setting meta informations ([#38](https://github.com/aminnairi/preact-page/issues/38))
+
+### Bug & security fixes
+
+None.
 
 ## 1.2.0
 
