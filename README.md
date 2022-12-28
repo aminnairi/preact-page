@@ -182,8 +182,8 @@ export default () => {
 ```
 
 ```tsx
-import HomePage from "./home"
 import { PagesInterface } from "preact-page";
+import HomePage from "./home"
 
 export const pages: PagesInterface = [
   {
@@ -491,7 +491,7 @@ import NotFoundPage from "./pages/not-found"
 
 export const Main = () => {
   return (
-    <PageView />
+    <PageView fallback={<NotFoundPage />} />
   )
 }
 ```
