@@ -30,7 +30,7 @@ export const Main = () => {
   return (
     <Fragment>
       <Header />
-      <PageView fallback={<NotFoundPage />} />
+      <PageView />
     </Fragment>
   )
 }
