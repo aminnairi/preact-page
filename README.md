@@ -304,17 +304,17 @@ import { UsersPage } from "./users";
 export const pages: PagesInterface = [
   {
     path: "/",
-    title: () => "Home",
+    title: (pageParameters) => "Home",
     element: <HomePage />
   },
   {
     path: "/about",
-    title: () => "About",
+    title: (pageParameters) => "About",
     element: <AboutPage />
   },
   {
     path: "/users",
-    title: () => "Users",
+    title: (pageParameters) => "Users",
     element: <UsersPage />
   },
   {
@@ -337,20 +337,20 @@ import { UsersPage } from "./users";
 export const pages: PagesInterface = [
   {
     path: "/",
-    title: () => "Home",
-    description: () => "Home page description",
+    title: (pageParameters) => "Home",
+    description: (pageParameters) => "Home page description",
     element: <HomePage />
   },
   {
     path: "/about",
-    title: () => "About",
-    description: () => "About page description",
+    title: (pageParameters) => "About",
+    description: (pageParameters) => "About page description",
     element: <AboutPage />
   },
   {
     path: "/users",
-    title: () => "Users",
-    description: () => "Users page description",
+    title: (pageParameters) => "Users",
+    description: (pageParameters) => "Users page description",
     element: <UsersPage />
   },
   {
@@ -374,28 +374,28 @@ import { UsersPage } from "./users";
 export const pages: PagesInterface = [
   {
     path: "/",
-    title: () => "Home",
-    description: () => "Home page description",
+    title: (pageParameters) => "Home",
+    description: (pageParameters) => "Home page description",
     metas: [
-      () => ({ name: "theme-color", content: "#ffffff" })
+      (pageParameters) => ({ name: "theme-color", content: "#ffffff" })
     ],
     element: <HomePage />
   },
   {
     path: "/about",
-    title: () => "About",
-    description: () => "About page description",
+    title: (pageParameters) => "About",
+    description: (pageParameters) => "About page description",
     metas: [
-      () => ({ name: "theme-color", content: "#000000" })
+      (pageParameters) => ({ name: "theme-color", content: "#000000" })
     ],
     element: <AboutPage />
   },
   {
     path: "/users",
-    title: () => "Users",
-    description: () => "Users page description",
+    title: (pageParameters) => "Users",
+    description: (pageParameters) => "Users page description",
     metas: [
-      () => ({ name: "theme-color", content: "#ffffff" })
+      (pageParameters) => ({ name: "theme-color", content: "#ffffff" })
     ],
     element: <UsersPage />
   },
