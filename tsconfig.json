@@ -12,6 +12,7 @@
     "**/vite.config.ts"
   ],
   "compilerOptions": {
+    "removeComments": true,
     "rootDir": "sources",
     "outDir": "dist",
     "jsx": "react-jsx",
