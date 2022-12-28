@@ -25,7 +25,7 @@ import { Fragment } from "preact"
 import { useMemo } from "preact/hooks"
 import { usePageQuery } from "../sources"
 
-export const UsersPage = () => {
+export default () => {
   const queries = usePageQuery()
 
   const sort = useMemo(() => {

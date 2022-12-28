@@ -22,11 +22,8 @@
  * SOFTWARE.
  */
 import { PagesInterface } from "../sources";
-import { HomePage } from "./home"
-import { AboutPage } from "./about";
-import { UserPage } from "./user";
-import { UsersPage } from "./users";
-import { OldPage } from "./old"
+import { Loading } from "../components/loading"
+import { lazy } from "preact/compat"
 
 export const path = {
   home: "/",
@@ -43,6 +40,12 @@ export const path = {
   }
 }
 
+const HomePage = lazy(() => import("./home"))
+const AboutPage = lazy(() => import("./about"))
+const UsersPage = lazy(() => import("./users"))
+const UserPage = lazy(() => import("./user"))
+const OldPage = lazy(() => import("./old"))
+
 export const pages: PagesInterface = [
   {
     path: path.home,
@@ -50,7 +53,7 @@ export const pages: PagesInterface = [
     description: () => "Home page description",
     metas: [],
     element: <HomePage />
-    },
+  },
   {
     path: path.about,
     title: () => "About",
