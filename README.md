@@ -877,7 +877,7 @@ server.listen(8000, () => {
 
 ### PageDescription
 
-This component let's you use the page descriptioon set in the `pages` array of the provider directly into your markup. This is pretty much useful only when doing server-side rendering as displaying the markup for a meta is not necessary when using the client-side provider and is done automatically for you.
+This component let's you use the page description set in the `pages` array of the provider directly into your markup. This is pretty much useful only when doing server-side rendering as displaying the markup for a meta is not necessary when using the client-side provider and is done automatically for you.
 
 [Summary](#summary)
 
