@@ -729,6 +729,23 @@ This commponent let's you render your pages statically by giving it the path you
 #### Interface
 
 ```typescript
+export type PageParameters = Record<string, string | undefined>
+
+export interface PageMetaInterface {
+  name: string
+  content: string
+}
+
+export interface PageInterface {
+  path: string
+  title?: (parameters: PageParameters) => string
+  description?: (parameters: PageParameters) => string
+  metas?: Array<(parameters: PageParameters) => PageMetaInterface>
+  element: ComponentChildren
+}
+
+export type PagesInterface = Array<PageInterface>;
+
 export interface PageProviderInterface {
     pages: PagesInterface
     scrollRestauration?: ScrollRestoration
