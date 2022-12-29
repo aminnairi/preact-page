@@ -2,6 +2,7 @@
 
 ## Versions
 
+- [`1.4.1`](#141)
 - [`1.4.0`](#140)
 - [`1.3.0`](#130)
 - [`1.2.0`](#120)
@@ -11,6 +12,12 @@
 - [`0.2.1`](#021)
 - [`0.2.0`](#020)
 - [`0.1.0`](#010)
+
+## 1.4.1
+
+- Removed dead link for the PageLazy component that has been dropped ([#50](https://github.com/aminnairi/preact-page/pull/50))
+- Fixed typos in the documentation [#51](https://github.com/aminnairi/preact-page/pull/51)
+- Added missing interfaces for the static provider component [#52](https://github.com/aminnairi/preact-page/pull/52)
 
 ## 1.4.0
 
