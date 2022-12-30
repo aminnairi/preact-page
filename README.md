@@ -526,13 +526,13 @@ This is the component you may use to redirect the user to another page on click.
 ```typescript
 import { FunctionComponent } from "preact"
 
-export interface PageLinkProps {
+export interface PageLinkInterface {
     path: string
     replace?: boolean
     activeClassName?: string
 }
 
-export declare const PageLink: FunctionComponent<PageLinkProps>
+export declare const PageLink: FunctionComponent<PageLinkInterface>
 ```
 
 [Summary](#summary)
