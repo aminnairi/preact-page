@@ -33,6 +33,10 @@
     "history",
     "location"
   ],
+  "workspaces": [
+    "examples/client-side-rendering",
+    "examples/server-side-rendering"
+  ],
   "scripts": {
     "start": "vite",
     "build": "vite build",
