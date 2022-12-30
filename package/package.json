@@ -2,7 +2,7 @@
   "name": "preact-page",
   "description": "History Web API implementation for Preact written in TypeScript",
   "version": "1.5.0",
-  "homepage": "https://github.com/aminnairi/preact-page#readme",
+  "homepage": "https://github.com/aminnairi/preact-page/package#readme",
   "license": "MIT",
   "main": "./dist/index.umd.js",
   "browser": "./dist/index.umd.js",
@@ -13,7 +13,7 @@
     "node": ">=16"
   },
   "bugs": {
-    "url": "https://github.com/aminnairi/preact-page"
+    "url": "https://github.com/aminnairi/preact-page/issues"
   },
   "author": {
     "name": "Amin NAIRI",
