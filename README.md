@@ -763,8 +763,13 @@ export declare const PageStaticProvider: FunctionComponent<PageStaticProviderInt
 
 #### Example
 
+```bash
+npm install express preact-ssr-prepass preact-render-to-string
+```
+
 ```tsx
 import express from "express"
+import prepass from "preact-ssr-prepass"
 import { PageStaticProvider } from "preact-page"
 import { render } from "preact-render-to-string"
 import { Main } from "../client/main"
@@ -781,8 +786,8 @@ server.get("/api/users", (request, response) => {
 
 server.use(express.static("build/client"))
 
-server.all("*", (request, response) => {
-  response.set("Content-Type", "text/html").send("<!DOCTYPE html>" + render(
+server.all("*", async (request, response) => {
+  const virtualDom = (
     <PageStaticProvider pages={pages} path={request.url}>
       <html lang="en-US">
         <head>
@@ -799,7 +804,11 @@ server.all("*", (request, response) => {
         </body>
       </html>
     </PageStaticProvider>
-  ))
+  )
+  
+  await prepass(virtualDom)
+  
+  response.set("Content-Type", "text/html").send("<!DOCTYPE html>" + render(virtualDom))
 })
 
 server.listen(8000, () => {
@@ -847,8 +856,13 @@ export declare const PageTitle: FunctionComponent
 
 #### Example
 
+```bash
+npm install express preact-ssr-prepass preact-render-to-string
+```
+
 ```tsx
 import express from "express"
+import prepass from "preact-ssr-prepass"
 import { PageStaticProvider, PageTitle } from "preact-page"
 import { render } from "preact-render-to-string"
 import { Main } from "../client/main"
@@ -865,8 +879,8 @@ server.get("/api/users", (request, response) => {
 
 server.use(express.static("build/client"))
 
-server.all("*", (request, response) => {
-  response.set("Content-Type", "text/html").send("<!DOCTYPE html>" + render(
+server.all("*", async (request, response) => {
+  const virtualDom = (
     <PageStaticProvider pages={pages} path={request.url}>
       <html lang="en-US">
         <head>
@@ -882,7 +896,11 @@ server.all("*", (request, response) => {
         </body>
       </html>
     </PageStaticProvider>
-  ))
+  )
+  
+  await prepass(virtualDom)
+  
+  response.set("Content-Type", "text/html").send("<!DOCTYPE html>" + render(virtualDom))
 })
 
 server.listen(8000, () => {
@@ -910,8 +928,13 @@ export declare const PageDescription: FunctionComponent
 
 #### Example
 
+```bash
+npm install express preact-ssr-prepass preact-render-to-string
+```
+
 ```tsx
 import express from "express"
+import prepass from "preact-ssr-prepass"
 import { PageStaticProvider, PageDescription } from "preact-page"
 import { render } from "preact-render-to-string"
 import { Main } from "../client/main"
@@ -928,8 +951,8 @@ server.get("/api/users", (request, response) => {
 
 server.use(express.static("build/client"))
 
-server.all("*", (request, response) => {
-  response.set("Content-Type", "text/html").send("<!DOCTYPE html>" + render(
+server.all("*", async (request, response) => {
+  const virtualDom = (
     <PageStaticProvider pages={pages} path={request.url}>
       <html lang="en-US">
         <head>
@@ -945,7 +968,11 @@ server.all("*", (request, response) => {
         </body>
       </html>
     </PageStaticProvider>
-  ))
+  )
+  
+  await prepass(virtualDom)
+  
+  response.set("Content-Type", "text/html").send("<!DOCTYPE html>" + render(virtualDom))
 })
 
 server.listen(8000, () => {
@@ -973,8 +1000,13 @@ export declare const PageMetas: FunctionComponent
 
 #### Example
 
+```bash
+npm install express preact-ssr-prepass preact-render-to-string
+```
+
 ```tsx
 import express from "express"
+import prepass from "preact-ssr-prepass"
 import { PageStaticProvider, PageMetas } from "preact-page"
 import { render } from "preact-render-to-string"
 import { Main } from "../client/main"
@@ -991,8 +1023,8 @@ server.get("/api/users", (request, response) => {
 
 server.use(express.static("build/client"))
 
-server.all("*", (request, response) => {
-  response.set("Content-Type", "text/html").send("<!DOCTYPE html>" + render(
+server.all("*", async (request, response) => {
+  const virtualDom = (
     <PageStaticProvider pages={pages} path={request.url}>
       <html lang="en-US">
         <head>
@@ -1008,7 +1040,11 @@ server.all("*", (request, response) => {
         </body>
       </html>
     </PageStaticProvider>
-  ))
+  )
+  
+  await prepass(virtualDom)
+  
+  response.set("Content-Type", "text/html").send("<!DOCTYPE html>" + render(virtualDom))
 })
 
 server.listen(8000, () => {
