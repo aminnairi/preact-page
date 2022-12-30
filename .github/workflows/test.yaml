@@ -31,5 +31,11 @@ jobs:
       - name: Audit
         run: npm audit
 
-      - name: Pack
-        run: npm pack --dry-run
+      - name: Package Build
+        run: npm --workspace package pack
+
+      - name: Client-side rendering build
+        run: npm --workspace examples/client-side-rendering run build
+
+      - name: Server-side rendering build
+        run: npm --workspace examples/server-side-rendering run build

@@ -15,34 +15,78 @@ git clone https://github.com/aminnairi/preact-page
 cd preact-page
 ```
 
-## Dependencies
+## Package
+
+### Dependencies
 
 Install the Node dependencies locally.
 
 ```bash
-npm install
+npm --workspace package install
 ```
 
-## Development server
-
-Start a web server to test that everything is working as expected.
-
-```bash
-npm start
-```
-
-## Build
+### Build
 
 Build the library into the `dist` folder.
 
 ```bash
-npm run build
+npm --workspace package run build
 ```
 
-## Types
+### Pack
+
+```bash
+npm --workspace package pack
+```
+
+### Types
 
 Build the type definitions into the `dist` folder.
 
 ```bash
 npm run types
+```
+
+## Examples
+
+### Client-side rendering
+
+#### Preact Page installation
+
+```bash
+npm --workspace package pack
+npm --workspace examples/client-side-rendering install ./preact-page-*.tgz
+```
+
+#### Dependencies
+
+```bash
+npm --workspace examples/client-side-rendering install
+```
+
+#### Start
+
+```bash
+npm --workspace examples/client-side-rendering start
+```
+
+### Server-side rendering
+
+#### Preact Page installation
+
+```bash
+npm --workspace package pack
+npm --workspace examples/client-side-rendering install ./preact-page-*.tgz
+```
+
+#### Dependencies
+
+```bash
+npm --workspace examples/server-side-rendering install
+```
+
+#### Start
+
+```bash
+npm --workspace examples/server-side-rendering start
 ```
