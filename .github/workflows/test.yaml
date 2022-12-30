@@ -8,7 +8,7 @@ jobs:
       matrix:
         version: [19, 18, 17, 16, 15, 14, 13, 12, 11, 10]
         os: [ubuntu-latest, windows-latest]
-    name: Check that the project is working on ${{ matrix.version }} for ${{ matrix.os }}
+    name: Node ${{ matrix.version }} on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
