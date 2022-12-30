@@ -1,54 +1,8 @@
 {
-  "name": "preact-page",
-  "description": "History Web API implementation for Preact written in TypeScript",
-  "version": "1.4.2",
-  "homepage": "https://github.com/aminnairi/preact-page#readme",
-  "license": "MIT",
-  "main": "./dist/index.umd.js",
-  "browser": "./dist/index.umd.js",
-  "exports": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "sideEffects": false,
-  "engines": {
-    "node": ">=16"
-  },
-  "bugs": {
-    "url": "https://github.com/aminnairi/preact-page"
-  },
-  "author": {
-    "name": "Amin NAIRI",
-    "url": "https://github.com/aminnairi"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/aminnairi/preact-page.git"
-  },
-  "files": [
-    "./dist"
-  ],
-  "keywords": [
-    "preact",
-    "page",
-    "router",
-    "history",
-    "location"
-  ],
+  "private": true,
   "workspaces": [
     "examples/client-side-rendering",
-    "examples/server-side-rendering"
-  ],
-  "scripts": {
-    "start": "vite",
-    "build": "vite build",
-    "types": "tsc --project tsconfig.json --declaration --emitDeclarationOnly",
-    "prepack": "npm run build && npm run types && ls dist/index.mjs && ls dist/index.umd.js && ls dist/index.d.ts"
-  },
-  "devDependencies": {
-    "typescript": "4.9.4",
-    "vite": "4.0.3",
-    "vite-plugin-preact": "0.2.1"
-  },
-  "peerDependencies": {
-    "preact": "*"
-  }
+    "examples/server-side-rendering",
+    "package"
+  ]
 }
