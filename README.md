@@ -384,7 +384,7 @@ export const pages: PagesInterface = [
 ]
 ```
 
-And even some additional per-page metas a description.
+And even some additional per-page metas.
 
 ```tsx
 import { PagesInterface } from "preact-page"
