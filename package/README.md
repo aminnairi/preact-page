@@ -194,7 +194,7 @@ export const pages: PagesInterface = [
 
 ## Examples
 
-See [`examples`](./examples).
+See [`examples`](../examples).
 
 ## API
 
@@ -1786,36 +1786,36 @@ const HomePage = () => {
 
 ## Issues
 
-See [`issues`](../../issues).
+See [`issues`](../../../issues).
 
 [Summary](#summary)
 
 ## Changelog
 
-See [`CHANGELOG.md`](./CHANGELOG.md).
+See [`CHANGELOG.md`](../CHANGELOG.md).
 
 [Summary](#summary)
 
 ## Code of conduct
 
-See [`CODE_OF_CONDUCT`](./CODE_OF_CONDUCT.md).
+See [`CODE_OF_CONDUCT`](../CODE_OF_CONDUCT.md).
 
 [Summary](#summary)
 
 ## Contributing
 
-See [`CONTRIBUTING.md`](./CONTRIBUTING.md).
+See [`CONTRIBUTING.md`](../CONTRIBUTING.md).
 
 [Summary](#summary)
 
 ## License
 
-See [`LICENSE`](./LICENSE).
+See [`LICENSE`](../LICENSE).
 
 [Summary](#summary)
 
 ## Security
 
-See [`SECURITY.md`](./SECURITY.md).
+See [`SECURITY.md`](../SECURITY.md).
 
 [Summary](#summary)
