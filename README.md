@@ -10,6 +10,7 @@ History Web API implementation for Preact written in TypeScript
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Examples](#examples)
 - [API](#api)
   - [PageProvider](#pageprovider)
     - [Interface](#interface)
@@ -190,6 +191,10 @@ export const pages: PagesInterface = [
 ```
 
 [Summary](#summary)
+
+## Examples
+
+See [`examples`](./examples).
 
 ## API
 
