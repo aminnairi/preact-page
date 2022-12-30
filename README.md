@@ -178,7 +178,7 @@ export default () => {
 ```
 
 ```tsx
-import { PagesInterface } from "preact-page";
+import { PagesInterface } from "preact-page"
 import HomePage from "./home"
 
 export const pages: PagesInterface = [
@@ -221,15 +221,15 @@ export interface PageInterface {
   element: ComponentChildren
 }
 
-export type PagesInterface = Array<PageInterface>;
+export type PagesInterface = Array<PageInterface>
 
 export interface PageProviderInterface {
-    pages: PagesInterface;
-    scrollRestauration?: ScrollRestoration;
+    pages: PagesInterface
+    scrollRestauration?: ScrollRestoration
     base: string
 }
 
-export declare const PageProvider: FunctionComponent<PageProviderInterface>;
+export declare const PageProvider: FunctionComponent<PageProviderInterface>
 ```
 
 [Summary](#summary)
@@ -259,9 +259,9 @@ render(
 ```tsx
 import { PagesInterface } from "preact-page"
 import HomePage from "./home"
-import AboutPage from "./about";
-import UserPage from "./user";
-import UsersPage from "./users";
+import AboutPage from "./about"
+import UserPage from "./user"
+import UsersPage from "./users"
 
 export const pages: PagesInterface = [
   {
@@ -319,9 +319,9 @@ You can also provide a title.
 ```tsx
 import { PagesInterface } from "preact-page"
 import HomePage from "./home"
-import AboutPage from "./about";
-import UserPage from "./user";
-import UsersPage from "./users";
+import AboutPage from "./about"
+import UserPage from "./user"
+import UsersPage from "./users"
 
 export const pages: PagesInterface = [
   {
@@ -352,9 +352,9 @@ And a description.
 ```tsx
 import { PagesInterface } from "preact-page"
 import HomePage from "./home"
-import AboutPage from "./about";
-import UserPage from "./user";
-import UsersPage from "./users";
+import AboutPage from "./about"
+import UserPage from "./user"
+import UsersPage from "./users"
 
 export const pages: PagesInterface = [
   {
@@ -389,9 +389,9 @@ And even some additional per-page metas a description.
 ```tsx
 import { PagesInterface } from "preact-page"
 import HomePage from "./home"
-import AboutPage from "./about";
-import UserPage from "./user";
-import UsersPage from "./users";
+import AboutPage from "./about"
+import UserPage from "./user"
+import UsersPage from "./users"
 
 export const pages: PagesInterface = [
   {
@@ -454,7 +454,7 @@ export interface PageViewInterface {
     loading?: ComponentChildren
 }
 
-export declare const PageView: FunctionComponent<PageViewInterface>;
+export declare const PageView: FunctionComponent<PageViewInterface>
 ```
 
 [Summary](#summary)
@@ -527,12 +527,12 @@ This is the component you may use to redirect the user to another page on click.
 import { FunctionComponent } from "preact"
 
 export interface PageLinkProps {
-    path: string;
-    replace?: boolean;
-    activeClassName?: string;
+    path: string
+    replace?: boolean
+    activeClassName?: string
 }
 
-export declare const PageLink: FunctionComponent<PageLinkProps>;
+export declare const PageLink: FunctionComponent<PageLinkProps>
 ```
 
 [Summary](#summary)
@@ -583,11 +583,11 @@ This is the component you may use if you would like to redirect the user when th
 import { FunctionComponent } from "preact"
 
 export interface PageRedirectInterface {
-    path: string;
-    replace?: boolean;
+    path: string
+    replace?: boolean
 }
 
-export declare const PageRedirect: FunctionComponent<PageRedirectInterface>;
+export declare const PageRedirect: FunctionComponent<PageRedirectInterface>
 ```
 
 [Summary](#summary)
@@ -627,7 +627,7 @@ This component let's you navigate back in the history if there is an entry avail
 ```typescript
 import { FunctionComponent } from "preact"
 
-export declare const PageBack: FunctionComponent;
+export declare const PageBack: FunctionComponent
 ```
 
 [Summary](#summary)
@@ -657,7 +657,7 @@ This component let's you navigate forward in the history if there is an entry av
 ```typescript
 import { FunctionComponent } from "preact"
 
-export declare const PageForward: FunctionComponent;
+export declare const PageForward: FunctionComponent
 ```
 
 [Summary](#summary)
@@ -688,10 +688,10 @@ This component let's you navigate in any direction of any page count of your cho
 import { FunctionComponent } from "preact"
 
 export interface PageGoInterface {
-    offset: number;
+    offset: number
 }
 
-export declare const PageGo: FunctionComponent<PageGoInterface>;
+export declare const PageGo: FunctionComponent<PageGoInterface>
 ```
 
 [Summary](#summary)
@@ -744,7 +744,7 @@ export interface PageInterface {
   element: ComponentChildren
 }
 
-export type PagesInterface = Array<PageInterface>;
+export type PagesInterface = Array<PageInterface>
 
 export interface PageProviderInterface {
     pages: PagesInterface
@@ -840,7 +840,7 @@ This component let's you use the page title set in the `pages` array of the prov
 ```typescript
 import { FunctionComponent } from "preact"
 
-export declare const PageTitle: FunctionComponent;
+export declare const PageTitle: FunctionComponent
 ```
 
 [Summary](#summary)
@@ -903,7 +903,7 @@ This component let's you use the page description set in the `pages` array of th
 ```typescript
 import { FunctionComponent } from "preact"
 
-export declare const PageDescription: FunctionComponent;
+export declare const PageDescription: FunctionComponent
 ```
 
 [Summary](#summary)
@@ -966,7 +966,7 @@ This component let's you use the metas set in the `pages` array of the provider 
 ```typescript
 import { FunctionComponent } from "preact"
 
-export declare const PageMetas: FunctionComponent;
+export declare const PageMetas: FunctionComponent
 ```
 
 [Summary](#summary)
@@ -1027,7 +1027,7 @@ This hook let's you use the function that is used internally by the `<PageLink>`
 #### Interface
 
 ```typescript
-export declare const usePageLink: () => (path: string, replace?: boolean) => void;
+export declare const usePageLink: () => (path: string, replace?: boolean) => void
 ```
 
 [Summary](#summary)
@@ -1073,7 +1073,7 @@ This hook let's you programmatically navigate back in the history.
 #### Interface
 
 ```typescript
-export declare const usePageBack: () => () => void;
+export declare const usePageBack: () => () => void
 ```
 
 [Summary](#summary)
@@ -1105,7 +1105,7 @@ This hook let's you programmatically navigate back in the history.
 #### Interface
 
 ```typescript
-export declare const usePageForward: () => () => void;
+export declare const usePageForward: () => () => void
 ```
 
 [Summary](#summary)
@@ -1137,7 +1137,7 @@ This hook let's you programmatically navigate in any direction of your choice in
 #### Interface
 
 ```typescript
-export declare const usePageGo: () => (offset: number) => void;
+export declare const usePageGo: () => (offset: number) => void
 ```
 
 [Summary](#summary)
@@ -1172,7 +1172,7 @@ This hook let's you use the parameters that have been setup when adding a route.
 ```typescript
 export type PageParameters = Record<string, string | undefined>
 
-export declare const usePageParameters: () => PageParameters;
+export declare const usePageParameters: () => PageParameters
 ```
 
 [Summary](#summary)
@@ -1202,7 +1202,7 @@ Let's you access the base url defined in the provider.
 #### Interface
 
 ```typescript
-export declare const useBaseUrl: () => string;
+export declare const useBaseUrl: () => string
 ```
 
 [Summary](#summary)
@@ -1234,7 +1234,7 @@ This hook let's you use the query parameters of the URL, for instance if the URL
 #### Interface
 
 ```typescript
-export declare const usePageQuery: () => Record<string, string | undefined>;
+export declare const usePageQuery: () => Record<string, string | undefined>
 ```
 
 [Summary](#summary)
@@ -1264,7 +1264,7 @@ This hook let's you access the hash in the URL. For instance, if the URL looks l
 #### Interface
 
 ```typescript
-export declare const usePageHash: () => string;
+export declare const usePageHash: () => string
 ```
 
 [Summary](#summary)
@@ -1294,7 +1294,7 @@ This hook let's you access the host of your URL. For instance, if the URL looks 
 #### Interface
 
 ```typescript
-export declare const usePageHost: () => string;
+export declare const usePageHost: () => string
 ```
 
 [Summary](#summary)
@@ -1324,7 +1324,7 @@ This hook let's you access the host of your URL. For instance, if the URL looks 
 #### Interface
 
 ```typescript
-export declare const usePageHostName: () => string;
+export declare const usePageHostName: () => string
 ```
 
 [Summary](#summary)
@@ -1355,7 +1355,7 @@ This hook let's you access the full URL, meaning everything from the protocol up
 #### Interface
 
 ```typescript
-export declare const usePageUrl: () => string;
+export declare const usePageUrl: () => string
 ```
 
 [Summary](#summary)
@@ -1385,7 +1385,7 @@ This hook let's you access the origin of the request. For instance, if the URL l
 #### Interface
 
 ```typescript
-export declare const usePageOrigin: () => string;
+export declare const usePageOrigin: () => string
 ```
 
 [Summary](#summary)
@@ -1415,7 +1415,7 @@ This hook let's you access the password of a URL. Though it is rarely useful in 
 #### Interface
 
 ```typescript
-export declare const usePagePassword: () => string;
+export declare const usePagePassword: () => string
 ```
 
 [Summary](#summary)
@@ -1445,7 +1445,7 @@ This hook let's you access the user name of a URL. Though it is rarely useful in
 #### Interface
 
 ```typescript
-export declare const usePageUserName: () => string;
+export declare const usePageUserName: () => string
 ```
 
 [Summary](#summary)
@@ -1475,7 +1475,7 @@ This hook let's you access the path of a URL. For instance, if the URL looks lik
 #### Interface
 
 ```typescript
-export declare const usePagePath: () => string;
+export declare const usePagePath: () => string
 ```
 
 [Summary](#summary)
@@ -1505,7 +1505,7 @@ This hook let's you access the protocol of a URL. For instance, if the URL looks
 #### Interface
 
 ```typescript
-export declare const usePageProtocol: () => string;
+export declare const usePageProtocol: () => string
 ```
 
 [Summary](#summary)
@@ -1535,7 +1535,7 @@ This hook let's you access the port of a URL. For instance, if the URL looks lik
 #### Interface
 
 ```typescript
-export declare const usePagePort: () => string;
+export declare const usePagePort: () => string
 ```
 
 [Summary](#summary)
@@ -1580,7 +1580,7 @@ export interface PageInterface {
   element: ComponentChildren
 }
 
-export declare const usePage: () => PageInterface | undefined;
+export declare const usePage: () => PageInterface | undefined
 ```
 
 [Summary](#summary)
@@ -1616,7 +1616,7 @@ This function let's you match a URL that looks like a path you set in the `pages
 #### Interface
 
 ```typescript
-export declare const match: (route: string, path: string) => boolean;
+export declare const match: (route: string, path: string) => boolean
 ```
 
 [Summary](#summary)
@@ -1644,7 +1644,7 @@ This function let's you get the parameters of a URL that looks like a path you s
 ```typescript
 export type PageParameters = Record<string, string | undefined>
 
-export declare const matchParameters: (route: string, path: string) => PageParameters;
+export declare const matchParameters: (route: string, path: string) => PageParameters
 ```
 
 [Summary](#summary)
@@ -1670,7 +1670,7 @@ This function let's you join multiple path, without the headache of handling dan
 #### Interface
 
 ```typescript
-export declare const join: (...paths: Array<string>) => string;
+export declare const join: (...paths: Array<string>) => string
 ```
 
 [Summary](#summary)
@@ -1722,7 +1722,7 @@ This hook let's you know whenever the provider is ready to listen for route chan
 #### Interface
 
 ```typescript
-export declare const useReady: () => boolean;
+export declare const useReady: () => boolean
 ```
 
 [Summary](#summary)
