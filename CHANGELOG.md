@@ -2,6 +2,7 @@
 
 ## Versions
 
+- [`1.5.0`](#150)
 - [`1.4.2`](#142)
 - [`1.4.1`](#141)
 - [`1.4.0`](#140)
@@ -13,6 +14,14 @@
 - [`0.2.1`](#021)
 - [`0.2.0`](#020)
 - [`0.1.0`](#010)
+
+## 1.5.0
+
+- Added a hint in the documentation that this library has tree shaking ([#60](https://github.com/aminnairi/preact-page/pull/60))
+- Harmonized interface names in the documentation & source-code ([#61](https://github.com/aminnairi/preact-page/pull/61))
+- Added hint for using prepass with server-side-rendering in the documentation ([#62](https://github.com/aminnairi/preact-page/pull/62))
+- Added a matrix for testing the node version & different operating systems ([#63](https://github.com/aminnairi/preact-page/pull/63))
+- Added examples for client-side and server-side rendering ([#64](https://github.com/aminnairi/preact-page/pull/64))
 
 ## 1.4.2
 
