@@ -376,7 +376,7 @@ export const useBaseUrl = () => useContext(PageContext).baseUrl
 
 export const usePage = () => useContext(PageContext).page
 
-export interface PageLinkProps {
+export interface PageLinkInterface {
   path: string
   replace?: boolean
   activeClassName?: string
@@ -429,7 +429,7 @@ export const PageMetas: FunctionComponent = () => {
   )
 }
 
-export const PageLink: FunctionComponent<PageLinkProps> = ({ path, replace, activeClassName, children }) => {
+export const PageLink: FunctionComponent<PageLinkInterface> = ({ path, replace, activeClassName, children }) => {
   const pageLink = usePageLink()
   const pagePath = usePagePath()
   const baseUrl = useBaseUrl()
