@@ -2,6 +2,7 @@
 
 ## Versions
 
+- [`1.5.1`](#151)
 - [`1.5.0`](#150)
 - [`1.4.2`](#142)
 - [`1.4.1`](#141)
@@ -14,6 +15,10 @@
 - [`0.2.1`](#021)
 - [`0.2.0`](#020)
 - [`0.1.0`](#010)
+
+## 1.5.1
+
+- Fixed documentation not showing for the NPM package ([#67](https://github.com/aminnairi/preact-page/pull/67))
 
 ## 1.5.0
 
