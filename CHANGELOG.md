@@ -2,6 +2,7 @@
 
 ## Versions
 
+- [`1.4.2`](#142)
 - [`1.4.1`](#141)
 - [`1.4.0`](#140)
 - [`1.3.0`](#130)
@@ -12,6 +13,11 @@
 - [`0.2.1`](#021)
 - [`0.2.0`](#020)
 - [`0.1.0`](#010)
+
+## 1.4.2
+
+- Removed all dangling semi-colons in the documentation ([#58](https://github.com/aminnairi/preact-page/pull/58))
+- Fixed a typo in the documentation for the page provider ([#59](https://github.com/aminnairi/preact-page/pull/59))
 
 ## 1.4.1
 
