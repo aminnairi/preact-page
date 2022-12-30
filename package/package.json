@@ -1,7 +1,7 @@
 {
   "name": "preact-page",
   "description": "History Web API implementation for Preact written in TypeScript",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "homepage": "https://github.com/aminnairi/preact-page/package#readme",
   "license": "MIT",
   "main": "./dist/index.umd.js",
@@ -36,7 +36,7 @@
   "scripts": {
     "build": "vite build",
     "types": "tsc --project tsconfig.json --declaration --emitDeclarationOnly",
-    "prepack": "npm run build && npm run types && ls dist/index.mjs && ls dist/index.umd.js && ls dist/index.d.ts"
+    "prepack": "npm run build && npm run types && ls dist/index.mjs && ls dist/index.umd.js && ls dist/index.d.ts && ls README.md"
   },
   "devDependencies": {
     "typescript": "4.9.4",
