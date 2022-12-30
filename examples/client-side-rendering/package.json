@@ -9,7 +9,6 @@
     "vite-plugin-preact": "0.2.1"
   },
   "dependencies": {
-    "preact": "10.11.3",
-    "preact-page": "file:../../preact-page-1.4.2.tgz"
+    "preact": "10.11.3"
   }
 }
