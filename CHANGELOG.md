@@ -2,6 +2,7 @@
 
 ## Versions
 
+- [`1.5.2`](#152)
 - [`1.5.1`](#151)
 - [`1.5.0`](#150)
 - [`1.4.2`](#142)
@@ -15,6 +16,10 @@
 - [`0.2.1`](#021)
 - [`0.2.0`](#020)
 - [`0.1.0`](#010)
+
+## 1.5.2
+
+- Using absolute links to prevent mistakes when moving the documentation file ([#69](https://github.com/aminnairi/preact-page/pull/69))
 
 ## 1.5.1
 
