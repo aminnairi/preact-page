@@ -194,7 +194,7 @@ export const pages: PagesInterface = [
 
 ## Examples
 
-See [`examples`](../examples).
+See [`examples`](https://github.com/aminnairi/preact-page/tree/development/examples).
 
 ## API
 
@@ -1786,36 +1786,36 @@ const HomePage = () => {
 
 ## Issues
 
-See [`issues`](../../../issues).
+See [`issues`](https://github.com/aminnairi/preact-page/issues).
 
 [Summary](#summary)
 
 ## Changelog
 
-See [`CHANGELOG.md`](../CHANGELOG.md).
+See [`CHANGELOG.md`](https://github.com/aminnairi/preact-page/blob/development/CHANGELOG.md).
 
 [Summary](#summary)
 
 ## Code of conduct
 
-See [`CODE_OF_CONDUCT`](../CODE_OF_CONDUCT.md).
+See [`CODE_OF_CONDUCT`](https://github.com/aminnairi/preact-page/blob/development/CODE_OF_CONDUCT.md).
 
 [Summary](#summary)
 
 ## Contributing
 
-See [`CONTRIBUTING.md`](../CONTRIBUTING.md).
+See [`CONTRIBUTING.md`](https://github.com/aminnairi/preact-page/blob/development/CONTRIBUTING.md).
 
 [Summary](#summary)
 
 ## License
 
-See [`LICENSE`](../LICENSE).
+See [`LICENSE`](https://github.com/aminnairi/preact-page/blob/development/LICENSE).
 
 [Summary](#summary)
 
 ## Security
 
-See [`SECURITY.md`](../SECURITY.md).
+See [`SECURITY.md`](https://github.com/aminnairi/preact-page/blob/development/SECURITY.md).
 
 [Summary](#summary)
