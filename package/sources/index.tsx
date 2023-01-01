@@ -222,10 +222,10 @@ export const PageProvider: FunctionComponent<PageProviderInterface> = ({ childre
 
   useEffect(() => {
     if (page) {
-      const titleElement = document.querySelector("title")
-      const descriptionElement = document.querySelector("meta[name='description']")
 
       if (page.title) {
+        const titleElement = document.querySelector("title")
+
         if (titleElement) {
           titleElement.innerText = page.title(parameters)
         } else {
@@ -236,6 +236,8 @@ export const PageProvider: FunctionComponent<PageProviderInterface> = ({ childre
       }
 
       if (page.description) {
+        const descriptionElement = document.querySelector("meta[name='description']")
+
         if (descriptionElement) {
           descriptionElement.setAttribute("content", page.description(parameters))
         } else {
@@ -257,9 +259,42 @@ export const PageProvider: FunctionComponent<PageProviderInterface> = ({ childre
             const pageMetaElement = document.createElement("meta")
             pageMetaElement.setAttribute("name", pageMeta.name)
             pageMetaElement.setAttribute("content", pageMeta.content)
+            document.head.appendChild(pageMetaElement)
           }
         })
       }
+    }
+
+    return () => {
+      if (page) {
+        if (page.title) {
+          const titleElement = document.querySelector("title")
+
+          if (titleElement) {
+            titleElement.innerText = ""
+          }
+        }
+
+        if (page.description) {
+          const descriptionElement = document.querySelector("meta[name='description']")
+
+          if (descriptionElement) {
+            document.head.removeChild(descriptionElement)
+          }
+        }
+
+        if (page.metas) {
+          page.metas.forEach(getPageMeta => {
+            const pageMeta = getPageMeta(parameters)
+            const pageMetaElement = document.querySelector(`meta[name="${pageMeta.name}"]`)
+
+            if (pageMetaElement) {
+              document.head.removeChild(pageMetaElement)
+            }
+          })
+        }
+      }
+      
     }
   }, [page, parameters])
 
