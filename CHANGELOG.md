@@ -2,6 +2,7 @@
 
 ## Versions
 
+- [`1.5.3`](#153)
 - [`1.5.2`](#152)
 - [`1.5.1`](#151)
 - [`1.5.0`](#150)
@@ -16,6 +17,10 @@
 - [`0.2.1`](#021)
 - [`0.2.0`](#020)
 - [`0.1.0`](#010)
+
+## 1.5.3
+
+- Fixed metas not rendered on the client-side ([#85](https://github.com/aminnairi/preact-page/pull/85))
 
 ## 1.5.2
 
