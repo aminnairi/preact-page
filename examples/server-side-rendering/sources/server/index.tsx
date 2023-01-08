@@ -19,9 +19,13 @@ server.all("*", async (request, response) => {
         <head>
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta name="theme-color" content="#ffffff" />
           <PageDescription />
           <PageTitle />
           <script src="/index.js" type="module"></script>
+          <link rel="icon" href="/logo.png" />
+          <link rel="apple-touch-icon" href="/logo.png" />
+          <link rel="manifest" href="/manifest.json" />
         </head>
         <body>
           <div id="root">
