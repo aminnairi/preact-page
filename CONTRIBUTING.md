@@ -70,6 +70,18 @@ npm --workspace examples/client-side-rendering install
 npm --workspace examples/client-side-rendering start
 ```
 
+#### Build
+
+```bash
+npm --workspace examples/client-side-rendering run build
+```
+
+#### Serve
+
+```bash
+npm --workspace examples/client-side-rendering run serve
+```
+
 ### Server-side rendering
 
 #### Preact Page installation
@@ -89,4 +101,16 @@ npm --workspace examples/server-side-rendering install
 
 ```bash
 npm --workspace examples/server-side-rendering start
+```
+
+#### Build
+
+```bash
+npm --workspace examples/server-side-rendering run build
+```
+
+#### Serve
+
+```bash
+npm --workspace examples/server-side-rendering run serve
 ```
