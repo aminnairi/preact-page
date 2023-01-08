@@ -2,11 +2,16 @@ import { join } from "path"
 import { render } from "preact-render-to-string"
 import prepass from "preact-ssr-prepass"
 import express from "express"
+import compression from "compression"
 import { PageStaticProvider, PageTitle, PageDescription } from "preact-page"
 import { pages } from "../client/pages"
 import { Main } from "../client/main"
 
 const server = express()
+
+server.use(compression({
+  level: 9
+}))
 
 server.use(express.static(join(process.cwd(), "build/client")))
 
