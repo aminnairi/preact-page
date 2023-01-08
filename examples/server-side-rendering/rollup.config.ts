@@ -4,6 +4,9 @@ import nodeResolve from "@rollup/plugin-node-resolve"
 import commonjs from "@rollup/plugin-commonjs"
 import terser from "@rollup/plugin-terser"
 import run from "@rollup/plugin-run"
+import postcss from "rollup-plugin-postcss"
+import autoprefixer from "autoprefixer"
+import cssnano from "cssnano"
 
 const isDevelopment = process.env["NODE_ENV"] === "development"
 
@@ -14,6 +17,12 @@ export default defineConfig([
       esbuild({
         jsx: "automatic",
         jsxImportSource: "preact"
+      }),
+      postcss({
+        plugins: [
+          autoprefixer(),
+          cssnano()
+        ]
       }),
       nodeResolve(),
       commonjs(),
