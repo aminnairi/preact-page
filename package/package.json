@@ -2,7 +2,7 @@
   "name": "preact-page",
   "description": "History Web API implementation for Preact written in TypeScript",
   "version": "1.5.3",
-  "homepage": "https://github.com/aminnairi/preact-page/package#readme",
+  "homepage": "https://github.com/aminnairi/preact-page/blob/development/package#readme",
   "license": "MIT",
   "main": "./dist/index.umd.js",
   "browser": "./dist/index.umd.js",
