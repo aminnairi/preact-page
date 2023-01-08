@@ -7,6 +7,7 @@ import run from "@rollup/plugin-run"
 import postcss from "rollup-plugin-postcss"
 import autoprefixer from "autoprefixer"
 import cssnano from "cssnano"
+import copy from "rollup-plugin-copy"
 
 const isDevelopment = process.env["NODE_ENV"] === "development"
 
@@ -14,6 +15,14 @@ export default defineConfig([
   {
     input: "sources/client/index.tsx",
     plugins: [
+      copy({
+        targets: [
+          {
+            src: "sources/client/public/*",
+            dest: "build/client"
+          }
+        ]
+      }),
       esbuild({
         jsx: "automatic",
         jsxImportSource: "preact"
