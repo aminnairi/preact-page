@@ -52,7 +52,8 @@ export default defineConfig([
       "preact-page",
       "path",
       "preact",
-      "preact/compat"
+      "preact/compat",
+      "compression"
     ],
     plugins: [
       esbuild({
