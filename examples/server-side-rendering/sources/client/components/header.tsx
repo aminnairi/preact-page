@@ -6,27 +6,27 @@ export const Header = () => {
       <nav>
         <ul>
           <li>
-            <PageLink path="/">
+            <PageLink path="/" activeClassName="active">
               Home
             </PageLink>
           </li>
           <li>
-            <PageLink path="/about">
+            <PageLink path="/about" activeClassName="active">
               About
             </PageLink>
           </li>
           <li>
-            <PageLink path="/user/1">
+            <PageLink path="/user/1" activeClassName="active">
               User#1
             </PageLink>
           </li>
           <li>
-            <PageLink path="/user/2">
+            <PageLink path="/user/2" activeClassName="active">
               User#2
             </PageLink>
           </li>
           <li>
-            <PageLink path="/user/3">
+            <PageLink path="/user/3" activeClassName="active">
               User#3
             </PageLink>
           </li>
