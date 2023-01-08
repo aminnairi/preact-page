@@ -81,19 +81,3 @@ export { PageForward } from "./components/page-forward"
 export { PageGo } from "./components/page-go"
 export { PageView } from "./components/page-view"
 export { PageTitle } from "./components/page-title"
-
-// To delete in the next episode
-export interface PageLazyInterface {
-  path: string
-  fallback: ComponentChildren
-}
-
-export const PageLazy = ({ path, fallback }: PageLazyInterface) => {
-  const Component = lazy(() => import(path))
-  
-  return (
-    <Suspense fallback={fallback}>
-      <Component />
-    </Suspense>
-  )
-}
