@@ -3,7 +3,8 @@
   "type": "module",
   "scripts": {
     "start": "rollup --config rollup.config.ts --configPlugin esbuild --environment NODE_ENV:development --watch",
-    "build": "rollup --config rollup.config.ts --configPlugin esbuild --environment NODE_ENV:production"
+    "build": "rollup --config rollup.config.ts --configPlugin esbuild --environment NODE_ENV:production",
+    "serve": "node build/server"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "24.0.0",
