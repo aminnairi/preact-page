@@ -23,6 +23,7 @@
     "strict": true,
     "skipLibCheck": true,
     "declaration": true,
-    "downLevelIteration": true
+    "declarationDir": "types",
+    "downlevelIteration": true
   }
 }
