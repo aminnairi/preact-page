@@ -1,3 +1,5 @@
+import "./index.css"
+
 import { hydrate } from "preact"
 import { PageProvider } from "preact-page"
 import { Main } from "./main"
