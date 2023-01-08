@@ -196,6 +196,26 @@ export const pages: PagesInterface = [
 
 See [`examples`](https://github.com/aminnairi/preact-page/tree/development/examples).
 
+## Template Scafolding
+
+After you finished reviewing the examples, you can choose to work from one or another by following the steps bellow.
+
+### Client-side rendering
+
+```bash
+npx degit aminnairi/preact-page/examples/client-side-rendering my-project
+cd my-project
+npm install --save --save-exact preact-page
+```
+
+### Server-side rendering
+
+```bash
+npx degit aminnairi/preact-page/examples/server-side-rendering my-project
+cd my-project
+npm install --save --save-exact preact-page
+```
+
 ## API
 
 [Summary](#summary)
