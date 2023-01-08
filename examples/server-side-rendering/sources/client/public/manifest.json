@@ -1,0 +1,20 @@
+{
+  "background_color": "#ffffff",
+  "description": "Application",
+  "display": "standalone",
+  "name": "Application",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false,
+  "scope": "/",
+  "short_name": "App",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}
