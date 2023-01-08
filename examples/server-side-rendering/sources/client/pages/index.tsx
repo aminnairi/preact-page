@@ -1,18 +1,26 @@
 import { lazy } from "preact/compat"
-import { PagesInterface } from "preact-page"
+import { PageParameters, PagesInterface, withParameters } from "preact-page"
 
 const HomePage = lazy(() => import("./home"))
 const UserPage = lazy(() => import("./user"))
 
+export const route = {
+  home: "/",
+  user: {
+    plain: "/user/:user",
+    computed: (parameters: PageParameters) => withParameters(route.user.plain, parameters)
+  }
+}
+
 export const pages: PagesInterface = [
   {
-    path: "/",
+    path: route.home,
     title: () => "Home page",
     description: () => "This is the home page",
     element: <HomePage />
   },
   {
-    path: "/user/:user",
+    path: route.user.plain,
     title: ({ user }) => `User#${user} details page`,
     description: ({ user }) => `This is the user#${user} details page`,
     element: <UserPage />
