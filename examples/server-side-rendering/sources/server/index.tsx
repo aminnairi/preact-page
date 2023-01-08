@@ -37,6 +37,9 @@ server.all("*", async (request, response) => {
   response.set("Content-Type", "text/html").send("<!DOCTYPE html>" + render(virtualDom))
 })
 
-server.listen(8000, () => {
-  console.log("Server listening for requests")
+const port = 8000
+const host = "0.0.0.0"
+
+server.listen(port, host, () => {
+  console.log(`Server listening for requests at http://${host}:${port}`)
 })
