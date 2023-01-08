@@ -2,6 +2,7 @@
 
 ## Versions
 
+- [`1.6.0`](#160)
 - [`1.5.4`](#154)
 - [`1.5.3`](#153)
 - [`1.5.2`](#152)
@@ -18,6 +19,21 @@
 - [`0.2.1`](#021)
 - [`0.2.0`](#020)
 - [`0.1.0`](#010)
+
+## 1.6.0
+
+- Splitted the source-code for a better understanding of the code base ([#89](https://github.com/aminnairi/preact-page/pull/89))
+- Added module export in the package ([#90](https://github.com/aminnairi/preact-page/pull/90))
+- Added port and host displayed on the console when starting the server ([#91](https://github.com/aminnairi/preact-page/pull/91))
+- Added support for CSS by using PostCSS for the SSR example ([#92](https://github.com/aminnairi/preact-page/pull/92))
+- Added `robots.txt` files for all examples [#93](https://github.com/aminnairi/preact-page/pull/93)
+- Added manifest, icons & more metas for all examples ([#94](https://github.com/aminnairi/preact-page/pull/94))
+- Added maximum level compression for the server side rendering ([#95](https://github.com/aminnairi/preact-page/pull/95))
+- Better client side rendering SEO ([#96](https://github.com/aminnairi/preact-page/pull/96))
+- Added instructions for using the examples as templates ([#97](https://github.com/aminnairi/preact-page/pull/97))
+- Added instructions for the examples ([#98](https://github.com/aminnairi/preact-page/pull/98))
+- Removed unused & undocumented components ([#99](https://github.com/aminnairi/preact-page/pull/99))
+- Added a concrete example of using the `withParameters` function ([#100](https://github.com/aminnairi/preact-page/pull/100))
 
 ## 1.5.4
 
