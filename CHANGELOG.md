@@ -2,6 +2,7 @@
 
 ## Versions
 
+- [`1.5.4`](#154)
 - [`1.5.3`](#153)
 - [`1.5.2`](#152)
 - [`1.5.1`](#151)
@@ -17,6 +18,10 @@
 - [`0.2.1`](#021)
 - [`0.2.0`](#020)
 - [`0.1.0`](#010)
+
+## 1.5.4
+
+- Fixed the link to the home page for the NPM package ([#88](https://github.com/aminnairi/preact-page/pull/88))
 
 ## 1.5.3
 
