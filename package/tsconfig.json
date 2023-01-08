@@ -21,6 +21,9 @@
     "target": "esnext",
     "moduleResolution": "node",
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "declaration": true,
+    "declarationDir": "types",
+    "downlevelIteration": true
   }
 }
