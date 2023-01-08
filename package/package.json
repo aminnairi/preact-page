@@ -1,7 +1,7 @@
 {
   "name": "preact-page",
   "description": "History Web API implementation for Preact written in TypeScript",
-  "version": "1.5.4",
+  "version": "1.6.0",
   "homepage": "https://github.com/aminnairi/preact-page/blob/development/package#readme",
   "license": "MIT",
   "main": "./dist/index.umd.js",
@@ -9,7 +9,7 @@
   "exports": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "sideEffects": false,
+  "sideEffects": true,
   "engines": {
     "node": ">=16"
   },
