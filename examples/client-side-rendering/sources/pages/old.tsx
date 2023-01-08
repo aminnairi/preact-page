@@ -1,7 +1,8 @@
 import { PageRedirect } from "preact-page"
+import { route } from "../pages"
 
 export default () => {
   return (
-    <PageRedirect path="/" />
+    <PageRedirect path={route.home} />
   )
 }

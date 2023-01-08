@@ -1,4 +1,5 @@
 import { PageLink } from "preact-page"
+import { route } from "../pages"
 
 export const Header = () => {
   return (
@@ -6,7 +7,7 @@ export const Header = () => {
       <nav>
         <ul>
           <li>
-            <PageLink path="/" activeClassName="active">
+            <PageLink path={route.home} activeClassName="active">
               Home
             </PageLink>
           </li>
@@ -16,17 +17,17 @@ export const Header = () => {
             </PageLink>
           </li>
           <li>
-            <PageLink path="/user/1" activeClassName="active">
+            <PageLink path={route.user.computed({user: "1"})} activeClassName="active">
               User#1
             </PageLink>
           </li>
           <li>
-            <PageLink path="/user/2" activeClassName="active">
+            <PageLink path={route.user.computed({user: "2"})} activeClassName="active">
               User#2
             </PageLink>
           </li>
           <li>
-            <PageLink path="/user/3" activeClassName="active">
+            <PageLink path={route.user.computed({user: "3"})} activeClassName="active">
               User#3
             </PageLink>
           </li>
