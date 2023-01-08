@@ -7,6 +7,7 @@
   "main": "./dist/index.umd.js",
   "browser": "./dist/index.umd.js",
   "exports": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "sideEffects": false,
   "engines": {
